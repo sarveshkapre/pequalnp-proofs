@@ -1,0 +1,70 @@
+# Complementation on subdivisions with unrestricted use of both inputs
+
+Start with any finite simple graph with $E$ edges. Replace each edge by a path with a separate interior. Let $k$ count all gates, including the original vertices. A gate may read its neighbors on either input or on both. Dependencies in both directions on a link are allowed. Each input may also take any free union of raw row and column stars. Any gates and raw stars may be selected for the final free union. Feedback has least-fixed-point semantics. The complement consists of the cells where the output is false.
+
+**Depth two.** If every original edge has at least $48\lceil\log_2(E+1)\rceil+25$ inserted gates, the worst minimum cost of the complement is $\Theta(2^{k/2})$ on every such wiring. The upper bound constructs a two-layer formula. The lower bound allows target circuits to share wires. The earlier result needed 49 gates per edge and restricted how readers used them. The logarithmic length here permits arbitrary readers. Its necessity is open. If $E=0$ the parallel-source theorem applies directly. [Earlier subdivision theorem](../subdivisions/THEOREM.md) · [Parallel sources and the matching lower bound](../THEOREM.md)
+
+**Quantitative bound.** Fix paid target depth $D\ge2$, put $m=2^{D-1}$, and take the least positive integer $a$ with $2^{16+3a}\ge3^{16m}$. Write $\rho=3/2^{(1+3a/16)/m}<1$. For each edge $e$, choose $t_e\ge1$ integral so its path has at least $a(2t_e+2)+1$ inserted gates. For every choice of raw inputs, paid dependencies and outputs the construction below partitions the intact paths into $A,B$ and gives
+
+$$
+1+F_D(\overline G)\ \le\ K_D\,2^{k/m}\,\rho^{|A|}\prod_{e\in B}(1+2^{-t_e/m}).
+$$
+
+Here $F_D$ is minimum formula size at paid depth at most $D$, and $K_D$ depends only on $D$. A uniform bound on $\sum_e2^{-t_e/m}$ suffices for a uniform constant-factor upper bound. Taking $t_e=m\lceil\log_2(E+1)\rceil$ makes the product at most $\exp(1)$. Depth two has $a=12$. For a fixed uniform length $L\ge4a+1$, take $t=\lfloor(L-1)/(2a)\rfloor-1$. Since $EL\le k$, the excess upper exponent per gate is at most $\log_2(1+2^{-t/m})/L+O_D(1/k)$. This bound on the excess decays exponentially with length. Whether a fixed sufficiently large length suffices for a constant-factor bound on all wirings remains open.
+
+## Two operations on rejection certificates
+
+A rejection certificate contains all selected outputs and chooses one arm at each gate it contains. All raw inputs of the chosen arm must be false, and all its paid predecessors must belong to the certificate. Call a gate in the certificate active. At a rejected cell one obtains a certificate by taking all false gates and choosing a false arm at each. Conversely, no gate in a closed certificate can fire in any iteration from the all-false state. Raw outputs add a common rectangle restriction. [Orientation certificates](https://github.com/open-goat/pequalnp-proofs/discussions/19729#discussioncomment-19919194)
+
+A dependency from $u$ into $v$ is mandatory if $v$ reads $u$ on both arms. Any active reader requires every mandatory predecessor. Enlarge the initial seed set of designated outputs by this rule to closure. Erase every read of a seed from every reader. This preserves feasible certificates since all seeds are already required. Call an original path intact if afterwards at least one dependency survives on each of its links. Two adjacent vertices of an intact path cannot both be seeds.
+
+**Remove a region.** Suppose a seed-free region has just two possible external readers, each with an arm bypassing every gate in the region. If both readers choose their bypass arms, delete the whole region from the active set and fix the orientation at one distinguished gate inside it. Every retained active gate still has all required predecessors. This removes one of the eight binary patterns at the distinguished gate and its two readers. Apply this rule simultaneously for disjoint groups of three distinguished gates. At a fixed surviving orientation the local test is a rectangle. Intersecting the row witness and the column witness gives a single closed witness. Lean proves a cover by at most $2^r7^h$ rectangles for $h$ such groups and $r$ other gates, including the other interior gates. [Lean statement and proof](../../../../lean/PEqualNP/PaidDepth/RelaySubdivision.lean)
+
+**Cut a mandatory run.** Let $v_0\to v_1\to\cdots\to v_t$ be distinct gates with every arrow a mandatory read. Split on membership of $v_1$ in the certificate.
+
+- If it belongs, make $v_0,v_1$ both seeds and erase all reads of both. Their common link disappears in both directions. Their own raw requirements stay in force.
+- If it is absent, every one of $v_1,\ldots,v_t$ must also be absent. Remove these $t$ gates and forbid any remaining arm that reads one. A branch removing a seed is empty.
+
+Every certificate in either branch reconstructs an original certificate. Lean proves this equivalence for arbitrary directed mandatory reachability, other pre-existing bans, and feedback. The first branch commits to no arm choices. The second saves at least $t$ gates.
+
+## Find the cuts
+
+On each intact path $e$ reserve its last inserted gate and take $a$ disjoint windows of $2t_e+2$ other consecutive internal gates. Set $t=t_e$ within a window. If any window contains a directed mandatory run of $t$ links, apply the binary cut to one such run. These paths form $B$.
+
+Otherwise, one of the two middle gates of each window is outside the saturated seed set. From that gate follow all mandatory arrows **toward readers** in the normalized wiring. The reached set is an interval extending at most $t-1$ links to either side, since a longer directed simple run would put the path in $B$. There is still a boundary neighbor inside the window on each side. The interval contains no seed. If it did, the closure taken before erasure would also have made the starting gate a seed. Neither boundary reader takes the adjacent gate on both arms, since that reader would then have been reached. This gives a removable region at each window. Cut the reserved gate on these paths, which form $A$, using the three signatures inactive, active-left and active-right. Each region together with its boundary readers is connected, lies inside one window, and is disjoint from the others.
+
+After the initial saturation, add only the two specified seeds in each binary cut’s first branch. All these additional seeds, removed vertices and clamped links lie on path interiors disjoint from the windows on $A$. When a vertex is removed, any arm that reads it can be forbidden by an identically false raw rejection test.
+
+## Count the gates
+
+Fix the subset $H\subseteq B$ taking the second branch. After the cuts, each component has at most one original vertex. It is a path or a hub with disjoint arms. Order a hub first, then its arms one by one from the hub outward. At any position only the hub and at most one tip on the earlier side can have neighbors later in the order.
+
+Give each of the $a|A|$ distinguished centers weight $13/16$ and each other retained gate weight one. The center and its two readers have enough weight for seven choices since $7^{16}\le2^{45}$. Total weight is at most
+
+$$
+k-|A|-3a|A|/16-\sum_{e\in H}t_e.
+$$
+
+Cut the vertex order at $m-1$ equal-weight thresholds, allowing empty blocks, and remove the earlier frontier at each cut. This removes at most $2(m-1)$ extra gates. The thresholds overshoot by at most one per block. A surviving region together with both readers lies in a single block because the group is connected. At most $2(m-1)$ groups are spoiled. Abandoning those discounts increases a block’s effective weight by $O_D(1)$. Conditioning the neighbors on the extra separator signatures cannot insert seeds into a surviving region since every external reader belongs to the same intact group.
+
+For fixed separator signatures, impose the raw exclusions of active separator gates, seed every required predecessor, and forbid reads of inactive separator gates. The block tests are then independent. Intersect the $m$ free unions of rectangles in a balanced tree, absorbing the common raw tests into the rectangles. Take a free union across separator signatures and across $H$. At fixed $H$ the cost plus one is bounded by a depth-dependent constant times $3^{|A|}2^{(k-|A|-3a|A|/16-\sum_{e\in H}t_e)/m}$. Summing over $H$ expands the product in the displayed theorem. On every wiring, designating every gate and giving each gate a separate raw bit-mismatch test realizes inequality on $2^k$ labels. Its diagonal complement supplies the matching fixed-depth lower bound. [Prior separator construction](../subdivisions/THEOREM.md) · [Fixed-depth diagonal bound](../THEOREM.md)
+
+## When constant length already suffices
+
+The binary choices discard more signatures if their pivots force one another. Before any binary cuts, order the pivots by mandatory reachability in the normalized wiring. If $u$ reaches $v$ along mandatory arrows toward readers, every certificate containing $v$ also contains $u$. Thus the inactive pivots in $H$ form a final segment on each chain in this preorder. Mutually reachable pivots always have identical membership. Only such $H$ need be included in the sum. All earlier estimates for each surviving branch still apply.
+
+Suppose the pivots can be partitioned into $w$ chains, and every $t_e\ge t\ge1$. For a chain of size $s$ there is at most one final segment of each cardinality, with ties from mutual reachability only removing possibilities. Its contribution is at most $\sum_{j=0}^s2^{-tj/m}$. Multiplying over chains bounds the contribution of every feasible $H$, including when extra implications hold between chains. The product in the main bound may therefore be replaced by $(1-2^{-t/m})^{-w}$. In particular, bounded chain count gives the sharp-order **upper** bound even at fixed length, for every output satisfying that condition. If the condition holds uniformly over outputs on a wiring, its worst-case cost is sharp. At depth two a fixed length of 49 permits $t=1$.
+
+More generally, an excess of $\epsilon k$ in the base-two log of the cost requires a linear-size antichain of pivots, for every available choice of cuts witnessing the theorem. Indeed the additional log cost is at most $w\log_2(1/(1-2^{-t/m}))+O_D(1)$. After quotienting mutual reachability, Dilworth’s chain decomposition identifies minimum chain count with maximum antichain size. This locates the remaining fixed-length difficulty in many mandatory runs whose activities can vary without forcing one another. [Dilworth's theorem](https://doi.org/10.2307/1969503)
+
+## A test on the actual signals
+
+The branch sum can also be restricted using the input cells themselves. Choose one valid certificate per rejected cell. One canonical choice takes every actually false source gate and selects a false arm there. Saturation and seed clamping preserve this certificate. For this choice $H$ is exactly the set of pivots whose gate values are **true** on the original rejected cell. Write $\mathcal H$ for these sets. Retaining only branches indexed by $\mathcal H$ still covers every rejected cell, and each retained branch is sound. Thus the product in the first bound can be replaced by $\sum_{H\in\mathcal H}\prod_{e\in H}q_e$, with $q_e=2^{-t_e/m}$. The empty complement is immediate.
+
+Let $v$ be the largest number of pivots on which all binary patterns occur among rejected cells. A weighted version of the Sauer–Shelah counting argument bounds this sum by $\sum_{S\subseteq B,\ |S|\le v}\prod_{e\in S}q_e$. To see it, project the two fibers $\mathcal H_0,\mathcal H_1$ of the last coordinate onto the other coordinates. With its weight $q\le1$, replacing the fibers by their union and intersection can only increase the weighted sum. The union has shattering dimension at most $v$. A set shattered by the intersection extends to a set one larger shattered by the original family, so the intersection has dimension at most $v-1$, with an empty intersection when $v=0$. Induct on the number of coordinates. The truncated sum is attained by the family of all subsets of size at most $v$. [Sauer](https://www.sciencedirect.com/science/article/pii/0097316572900192) · [Shelah](https://doi.org/10.2140/pjm.1972.41.247)
+
+In particular $v=o(k)$ gives a subexponential overhead at every fixed admissible length, since $\sum_{j\le v}\binom{k}{j}=2^{o(k)}$. An excess of $\epsilon k$ in log cost would require $\Omega_{\epsilon,D}(k)$ pivot signals that realize **every joint truth assignment on rejected inputs**. The same argument applies to the patterns of any choice of certificates covering all rejected cells. This is a necessary condition. To see its limit, take separate paths that propagate independent bit mismatches toward a hub. Let the hub intersect their union with a raw row-enable signal. Every path can change the output when enabled. When disabled, all joint pivot patterns appear on rejected cells. Yet rejection is a free union of the disabled row strip and the diagonal on all mismatch bits, which has the baseline two-layer cost. Observing all patterns alone does not establish a larger exponent.
+
+The window argument, packing estimate and asymptotic conclusion are written proofs. The region cover and mandatory cut were formalized in Lean. A separate theorem determines the exact cost of supporting every optional-path request from a shared rectangle bank. [Rectangle bank theorem](OPTIONAL_BANK.md) · [Checks and replay](REPLAY.md)
+
+Pjscruggs supplied the project’s star-intersection model and atlas. The bitwise inequality construction is due to Cavalar and Oliveira. The whole-region reduction, the binary cut on mandatory reads and their joint length-dependent bound are the additions here. Historical priority for these exact statements is unestablished. [Project hand-back](https://github.com/open-goat/pequalnp-proofs/discussions/19729) · [Cavalar and Oliveira](https://eccc.weizmann.ac.il/report/2025/033/)

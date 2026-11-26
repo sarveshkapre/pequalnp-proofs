@@ -1,0 +1,7 @@
+∀ g n : Nat,
+  let X := Fin g → Fin (n+2)
+  let bank := fun b : Nat => ∃ (row col : Fin b → X → Prop)
+    (use : (Fin g → Bool) → Fin b → Prop), ∀ mask x y,
+    (∀ i, mask i = true → x i = y i) ↔
+      ∃ j, use mask j ∧ row j x ∧ col j y
+  IsLeast {b : Nat | bank b} ((n+3)^g)
