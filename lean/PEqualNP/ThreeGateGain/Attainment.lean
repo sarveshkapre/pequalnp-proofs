@@ -1,0 +1,25 @@
+import PEqualNP.ThreeGateGain.GainAttainment
+import PEqualNP.ThreeGateGain.GainStatement
+
+/-- Three intersections realize the sharp score without any false positives. -/
+theorem PEqualNP.ThreeGateGain.Attainment :
+∀ (P L : Type) [Fintype P] [Fintype L] [Membership P L] [Configuration.ProjectivePlane P L],
+  3 ≤ Configuration.ProjectivePlane.order P L →
+  ∃ (w : BitVec 9) (r : P → BitVec 6) (c : L → BitVec 6),
+  let accepts := fun (p : P) (l : L) =>
+    let x := r p ||| c l
+    let a := x.getLsbD 0 && x.getLsbD 1
+    let b := (x.getLsbD 2 || (w.getLsbD 0 && a)) && (x.getLsbD 3 || (w.getLsbD 1 && a))
+    let g := (x.getLsbD 4 || (w.getLsbD 2 && a) || (w.getLsbD 3 && b)) &&
+             (x.getLsbD 5 || (w.getLsbD 4 && a) || (w.getLsbD 5 && b))
+    (w.getLsbD 6 && a) || (w.getLsbD 7 && b) || (w.getLsbD 8 && g)
+  (Finset.univ.sum fun p : P => Finset.univ.sum fun l : L =>
+    if accepts p l then @ite ℤ (p ∈ l) (Classical.propDecidable _) 1 (-1) else 0) =
+    10 * (Configuration.ProjectivePlane.order P L : ℤ) - 2 ∧
+  ∀ p l, accepts p l = true → p ∈ l
+ := by
+  intro P L _ _ _ _ hq
+  obtain ⟨w,r,c,score,clean⟩ := GainAttainment.attained hq
+  refine ⟨w,r,c,?_,clean⟩
+  exact (GainStatement.score_direct (fun (p:P) (l:L) => p∈l)
+    (fun p l => GainFinite.threeValue w (r p ||| c l))).symm.trans score

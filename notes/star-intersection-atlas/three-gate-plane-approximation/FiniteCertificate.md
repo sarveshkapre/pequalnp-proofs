@@ -1,0 +1,13 @@
+# How the finite certificate works
+
+A wiring fixes which earlier outputs feed each arm and which gate outputs reach the final union. Nine bits describe these choices. Each point and line supplies six bits, one per raw arm. At their intersection the circuit sees the bitwise union of those words. `GainFinite.trimmed_host` in `FiniteCatalogue.lean` checks all 512 wirings, including empty output, against 36 distinct scalar functions. After removing intrinsically full words and identifying equal neighborhoods, eight nonempty matrices and the zero matrix suffice up to simultaneous relabeling. Type zero has no neighbors.
+
+A leaf type has a center as its only predicted neighbor among the vertices still present. In particular each marked leaf type has a potential neighbor private to it, and no marked point leaf is adjacent to a marked line leaf. `FiniteFrame` branches over every pair of type sets with those two properties. Adding a type shrinks each older type’s private neighborhood and creates a private neighborhood for the new type. A branch can be discarded as soon as one becomes empty. `FiniteFastEligible` proves that this incremental procedure makes the same decisions as checking the definitions afresh.
+
+For each surviving pair the certificate checks that there are at most ten centers, and that their degree-17 contribution plus the residual upper bound, after subtracting forced crossings, is at most 158. A crossing is forced when *every* possible center for a chosen point leaf is adjacent to *every* possible center for a chosen line leaf. The geometric argument relates these finite counts to the physical circuit. The limit at order 16 then extends to higher orders because the bound grows by at most ten per unit increase in degree.
+
+The host census uses ordinary kernel reduction. The `FiniteV` modules split it into short branches, joined by `FiniteBranch`. The table entries, packed arithmetic and branch decisions all have checkable proofs. The finishing declaration is `GainFinite.all_checked` in `FiniteVerdicts.lean`.
+
+At the transition from row selection to column selection, `enterColumns` proves that the two lists of remaining candidates agree. Without that short equality, Lean could traverse the entire column search to tell that two expressions meant the same thing. For host 10, making the equality explicit let all six files check in 17 seconds on the Mac.
+
+From this directory, `python3 -B generate_finite_shards.py` regenerates the 48 shard sources in memory and compares them byte for byte. The optional `--output DIR` writes fresh sources to an existing directory. The generator chooses the locations of the splits. Lean checks the cases on either side of each split and the proof that joins them.
