@@ -1,0 +1,6 @@
+∀ (R C s : Nat), 2 ≤ s → s < R → s < C → ∀ k : Nat,
+  ((∃ D : PEqualNP.CircuitLowerBounds.Circuit, PEqualNP.MetaComplexity.FanInTwo D ∧ D.size ≤ k ∧
+    PEqualNP.Represents.Represents
+      (fun (u : Fin R) (v : Fin C) => !decide (u.val = v.val ∧ u.val < s)) D) ↔ 2*s ≤ k) ∧
+  (PEqualNP.Represents.RepSizeAtMost
+    (fun (u : Fin R) (v : Fin C) => decide (u.val = v.val ∧ u.val < s)) k ↔ 2*s-1 ≤ k)

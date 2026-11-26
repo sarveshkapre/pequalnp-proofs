@@ -1,0 +1,1151 @@
+{
+  "board_updated_at": "2026-11-26T22:01:24.398Z",
+  "board_rows": 2864,
+  "numeric_titles": 712,
+  "matches": [
+    {
+      "id": "L-meta-20403",
+      "rows": 3,
+      "cols": 4,
+      "mask": 301,
+      "posted_budget": 6,
+      "circuit": 7,
+      "formula": 7,
+      "row_classes": [
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 4) => (301 : ℕ).testBit (4 * u.val + v.val)) 6"
+    },
+    {
+      "id": "L-meta-20406",
+      "rows": 3,
+      "cols": 4,
+      "mask": 316,
+      "posted_budget": 6,
+      "circuit": 7,
+      "formula": 7,
+      "row_classes": [
+        2,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 4) => (316 : ℕ).testBit (4 * u.val + v.val)) 6"
+    },
+    {
+      "id": "L-meta-20412",
+      "rows": 3,
+      "cols": 4,
+      "mask": 366,
+      "posted_budget": 6,
+      "circuit": 7,
+      "formula": 7,
+      "row_classes": [
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 4) => (366 : ℕ).testBit (4 * u.val + v.val)) 6"
+    },
+    {
+      "id": "L-meta-20883",
+      "rows": 4,
+      "cols": 5,
+      "mask": 33886,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (33886 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20884",
+      "rows": 4,
+      "cols": 5,
+      "mask": 33916,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (33916 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20885",
+      "rows": 4,
+      "cols": 5,
+      "mask": 34009,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (34009 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20887",
+      "rows": 4,
+      "cols": 5,
+      "mask": 34014,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (34014 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20900",
+      "rows": 4,
+      "cols": 5,
+      "mask": 35773,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (35773 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20902",
+      "rows": 4,
+      "cols": 5,
+      "mask": 35964,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (35964 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20912",
+      "rows": 4,
+      "cols": 5,
+      "mask": 39129,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        2,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (39129 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20914",
+      "rows": 4,
+      "cols": 5,
+      "mask": 39134,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (39134 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20920",
+      "rows": 4,
+      "cols": 5,
+      "mask": 39737,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (39737 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20924",
+      "rows": 4,
+      "cols": 5,
+      "mask": 39902,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 10,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (39902 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20932",
+      "rows": 4,
+      "cols": 5,
+      "mask": 47582,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (47582 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20935",
+      "rows": 4,
+      "cols": 5,
+      "mask": 48094,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 10,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (48094 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20940",
+      "rows": 4,
+      "cols": 5,
+      "mask": 101624,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        1,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (101624 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20943",
+      "rows": 4,
+      "cols": 5,
+      "mask": 101788,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (101788 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-20955",
+      "rows": 4,
+      "cols": 5,
+      "mask": 105720,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 10,
+      "row_classes": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        1,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => (105720 : ℕ).testBit (5 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-21768",
+      "rows": 4,
+      "cols": 6,
+      "mask": 266429,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (266429 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21769",
+      "rows": 4,
+      "cols": 6,
+      "mask": 266430,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (266430 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21773",
+      "rows": 4,
+      "cols": 6,
+      "mask": 266686,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (266686 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21774",
+      "rows": 4,
+      "cols": 6,
+      "mask": 266744,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (266744 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21778",
+      "rows": 4,
+      "cols": 6,
+      "mask": 267198,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (267198 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21782",
+      "rows": 4,
+      "cols": 6,
+      "mask": 268222,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (268222 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21796",
+      "rows": 4,
+      "cols": 6,
+      "mask": 274301,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (274301 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21824",
+      "rows": 4,
+      "cols": 6,
+      "mask": 287161,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        2,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (287161 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21826",
+      "rows": 4,
+      "cols": 6,
+      "mask": 287166,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (287166 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21838",
+      "rows": 4,
+      "cols": 6,
+      "mask": 290425,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (290425 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21842",
+      "rows": 4,
+      "cols": 6,
+      "mask": 290750,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (290750 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21844",
+      "rows": 4,
+      "cols": 6,
+      "mask": 291320,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (291320 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21858",
+      "rows": 4,
+      "cols": 6,
+      "mask": 320446,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (320446 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-21865",
+      "rows": 4,
+      "cols": 6,
+      "mask": 323518,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (323518 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23060",
+      "rows": 3,
+      "cols": 6,
+      "mask": 4285,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (4285 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23061",
+      "rows": 3,
+      "cols": 6,
+      "mask": 4348,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        2,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (4348 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23062",
+      "rows": 3,
+      "cols": 6,
+      "mask": 4537,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (4537 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23064",
+      "rows": 3,
+      "cols": 6,
+      "mask": 4542,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (4542 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23069",
+      "rows": 3,
+      "cols": 6,
+      "mask": 5054,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (5054 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23073",
+      "rows": 3,
+      "cols": 6,
+      "mask": 6078,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (6078 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23079",
+      "rows": 3,
+      "cols": 6,
+      "mask": 13107,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (13107 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23085",
+      "rows": 3,
+      "cols": 6,
+      "mask": 14140,
+      "posted_budget": 8,
+      "circuit": 9,
+      "formula": 9,
+      "row_classes": [
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 3) (v : Fin 6) => (14140 : ℕ).testBit (6 * u.val + v.val)) 8"
+    },
+    {
+      "id": "L-meta-23280",
+      "rows": 4,
+      "cols": 6,
+      "mask": 389054,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (389054 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23286",
+      "rows": 4,
+      "cols": 6,
+      "mask": 799224,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (799224 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23289",
+      "rows": 4,
+      "cols": 6,
+      "mask": 799539,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (799539 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23311",
+      "rows": 4,
+      "cols": 6,
+      "mask": 799548,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (799548 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23317",
+      "rows": 4,
+      "cols": 6,
+      "mask": 800572,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        2,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (800572 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23335",
+      "rows": 4,
+      "cols": 6,
+      "mask": 815608,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        2,
+        0,
+        0,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        2
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (815608 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23393",
+      "rows": 4,
+      "cols": 6,
+      "mask": 838899,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        0,
+        0,
+        2,
+        1
+      ],
+      "col_classes": [
+        0,
+        0,
+        2,
+        2,
+        1,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (838899 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23425",
+      "rows": 4,
+      "cols": 6,
+      "mask": 902972,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 10,
+      "row_classes": [
+        0,
+        1,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (902972 : ℕ).testBit (6 * u.val + v.val)) 9"
+    },
+    {
+      "id": "L-meta-23428",
+      "rows": 4,
+      "cols": 6,
+      "mask": 905020,
+      "posted_budget": 9,
+      "circuit": 10,
+      "formula": 11,
+      "row_classes": [
+        0,
+        0,
+        1,
+        2
+      ],
+      "col_classes": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        1
+      ],
+      "statement": "PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 6) => (905020 : ℕ).testBit (6 * u.val + v.val)) 9"
+    }
+  ]
+}

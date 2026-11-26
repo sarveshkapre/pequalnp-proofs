@@ -1,0 +1,15 @@
+let Pos := fun {d : Nat} (f : PEqualNP.MetaComplexity.DMFormula d) =>
+  PEqualNP.MetaComplexity.DMFormula.rec (motive := fun _ => Prop) (fun _ b => b = true)
+    (fun _ _ l r => l ∧ r) (fun _ _ l r => l ∧ r) f
+∀ (R C : Nat) (pr : Fin R → Fin 3) (pc : Fin C → Fin 3),
+  Function.Surjective pr → Function.Surjective pc →
+  let G := fun (r : Fin R) (c : Fin C) =>
+    decide (((pr r).val ≤ 1 ∧ (pc c).val ≤ 1 ∧ ((pr r).val < 1 ∨ (pc c).val < 1)) ∨
+            ((pr r).val = 2 ∧ (pc c).val = 2))
+  PEqualNP.Represents.RepSizeAtMost G (R+C) ∧
+  (∀ k : Nat, k < R+C → ¬ PEqualNP.Represents.RepSizeAtMost G k) ∧
+  ∀ k : Nat,
+    (∃ f : PEqualNP.MetaComplexity.DMFormula (R+C), Pos f ∧
+      (∀ r c, f.eval (Fin.addCases (fun i => decide (i = r)) (fun j => decide (j = c))) = G r c) ∧
+      f.leaves ≤ k) ↔
+    R+C+min (Finset.univ.filter (fun r => pr r = 0)).card (Finset.univ.filter (fun c => pc c = 0)).card ≤ k

@@ -1,0 +1,4 @@
+∀ (M N : Nat) (p : Fin M → Fin 3) (q : Fin N → Fin 4),
+  Function.Surjective p → Function.Surjective q → ∀ k : Nat,
+    PEqualNP.Represents.RepSizeAtMost
+      (fun r c => (856 : Nat).testBit (4 * (p r).val + (q c).val)) k ↔ M+N ≤ k

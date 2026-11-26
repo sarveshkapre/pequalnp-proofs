@@ -1,0 +1,10 @@
+(∀ (m : Nat) (r s : Fin 4) (c d : Fin 5),
+    ((∀ (u : Fin 4), ∃ (v : Fin 5), m.testBit (5 * u.val + v.val) = true) ∧
+     (∀ (u : Fin 4), ∃ (v : Fin 5), m.testBit (5 * u.val + v.val) = false) ∧
+     (∀ (v : Fin 5), ∃ (u : Fin 4), m.testBit (5 * u.val + v.val) = true) ∧
+     (∀ (v : Fin 5), ∃ (u : Fin 4), m.testBit (5 * u.val + v.val) = false)) →
+    m.testBit (5 * r.val + c.val) = true → m.testBit (5 * r.val + d.val) = true →
+    m.testBit (5 * s.val + c.val) = true → m.testBit (5 * s.val + d.val) = false →
+    ¬ PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => m.testBit (5 * u.val + v.val)) 8) ∧
+  (∀ m ∈ ([33885, 33886, 33916, 34009, 34010, 34014, 34262, 34270, 34940, 34969, 35000, 35220, 35228, 35741, 35773, 35964, 36764, 39129, 39130, 39134, 39160, 39710, 39737, 39770, 39902, 47574, 47582, 48094, 101560, 101624, 101780, 101788, 105720] : List Nat),
+    (¬ PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => m.testBit (5 * u.val + v.val)) 8) ∧ PEqualNP.Represents.RepSizeAtMost (fun (u : Fin 4) (v : Fin 5) => m.testBit (5 * u.val + v.val)) 9)

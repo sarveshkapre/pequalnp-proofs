@@ -1,0 +1,6 @@
+∀ (R C : Nat), 4 ≤ R → 4 ≤ C → ∀ k : Nat,
+  let G := fun (r : Fin R) (c : Fin C) => (64478 : Nat).testBit (4 * min r.val 3 + min c.val 3)
+  (PEqualNP.Represents.RepSizeAtMost G k ↔ R+C+1 ≤ k) ∧
+  ((∃ D : PEqualNP.CircuitLowerBounds.Circuit, PEqualNP.MetaComplexity.FanInTwo D ∧
+      D.size ≤ k ∧ PEqualNP.Represents.Represents G D) ↔ 6 ≤ k) ∧
+  (PEqualNP.Represents.RepSizeAtMost (fun r c => !G r c) k ↔ 5 ≤ k)

@@ -1,0 +1,8 @@
+∀ (R C M N : Nat) (G : Fin R → Fin C → Bool),
+  0 < R → 0 < C →
+  (∀ r, ∃ s c, G r c = true ∧ G s c = false) →
+  (∀ c, ∃ d r, G r c = true ∧ G r d = false) →
+  ∀ (p : Fin M → Fin R) (q : Fin N → Fin C),
+    Function.Surjective p → Function.Surjective q → ∀ k : Nat,
+    PEqualNP.Represents.RepSizeAtMost (fun r c => G (p r) (q c)) k ↔
+      ∃ j, PEqualNP.Represents.RepSizeAtMost G j ∧ j + (M-R) + (N-C) ≤ k

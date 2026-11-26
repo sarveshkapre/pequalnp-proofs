@@ -1,0 +1,17 @@
+let Pos := fun {n : Nat} (f : PEqualNP.MetaComplexity.DMFormula n) =>
+  PEqualNP.MetaComplexity.DMFormula.rec (motive := fun _ => Prop) (fun _ b => b = true)
+    (fun _ _ l r => l ∧ r) (fun _ _ l r => l ∧ r) f
+(∀ k : Nat, 0 < k →
+  let G := fun (r c : Fin (k+2)) =>
+    decide ((r.val ≤ k ∧ c.val ≤ k ∧ (r.val < k ∨ c.val < k)) ∨ (r.val = k+1 ∧ c.val = k+1))
+  let Fits := fun (f : PEqualNP.MetaComplexity.DMFormula ((k+2)+(k+2))) =>
+    ∀ a : Fin (k+2) × Fin (k+2),
+      f.eval (Fin.addCases (fun i => decide (i = a.1)) (fun j => decide (j = a.2))) = G a.1 a.2
+  (¬ PEqualNP.Represents.RepSizeAtMost G (2*k+3)) ∧ PEqualNP.Represents.RepSizeAtMost G (2*k+4) ∧
+  (∀ f, Pos f → Fits f → 3*k+4 ≤ f.leaves) ∧ ∃ f, Pos f ∧ Fits f ∧ f.leaves = 3*k+4) ∧
+(∀ m ∈ ([34262,39902,47574,48094,105720] : List Nat),
+  let G := fun (r : Fin 4) (c : Fin 5) => m.testBit (5*r.val+c.val)
+  let Fits := fun (f : PEqualNP.MetaComplexity.DMFormula 9) =>
+    ∀ (r : Fin 4) (c : Fin 5), f.eval (fun i => (PEqualNP.Represents.oneEach r c).getD i.val false) = G r c
+  (¬ PEqualNP.Represents.RepSizeAtMost G 8) ∧ PEqualNP.Represents.RepSizeAtMost G 9 ∧
+  (∀ f, Pos f → Fits f → 11 ≤ f.leaves) ∧ ∃ f, Pos f ∧ Fits f ∧ f.leaves = 11)

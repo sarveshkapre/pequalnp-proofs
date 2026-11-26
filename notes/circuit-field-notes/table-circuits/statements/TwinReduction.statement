@@ -1,0 +1,14 @@
+let Pos := fun {d : Nat} (f : PEqualNP.MetaComplexity.DMFormula d) =>
+  PEqualNP.MetaComplexity.DMFormula.rec (motive := fun _ => Prop) (fun _ b => b = true)
+    (fun _ _ l r => l ∧ r) (fun _ _ l r => l ∧ r) f
+let Reads := fun {d : Nat} (f : PEqualNP.MetaComplexity.DMFormula d) (i : Fin d) =>
+  PEqualNP.MetaComplexity.DMFormula.rec (motive := fun _ => Nat) (fun j _ => if j = i then 1 else 0)
+    (fun _ _ l r => l + r) (fun _ _ l r => l + r) f
+∀ (n m : Nat) (p : Fin m → Fin n), Function.Surjective p →
+  ∀ (X : (Fin n → Bool) → Prop) (H : (Fin n → Bool) → Bool), (∃ x, X x ∧ H x = true) →
+  let Base := fun (f : PEqualNP.MetaComplexity.DMFormula n) => ∀ x, X x → f.eval x = H x
+  let Copies := fun (g : PEqualNP.MetaComplexity.DMFormula m) =>
+    ∀ (s : Fin n → Fin m), (∀ i, p (s i) = i) → ∀ x, X x →
+      g.eval (fun j => if s (p j) = j then x (p j) else false) = H x
+  (∀ k : Nat, (∃ f, Pos f ∧ Base f ∧ (∑ j, Reads f (p j)) ≤ k) ↔ ∃ g, Pos g ∧ Copies g ∧ g.leaves ≤ k) ∧
+  (∀ B : Fin m → Nat, (∃ f, Pos f ∧ Base f ∧ ∀ j, Reads f (p j) ≤ B j) ↔ ∃ g, Pos g ∧ Copies g ∧ ∀ j, Reads g j ≤ B j)
