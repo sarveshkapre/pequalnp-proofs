@@ -1,0 +1,23 @@
+let Cell := Fin 7 × Fin 7
+let Region := Set Cell
+let masks : Fin 7 → BitVec 7 := ![113, 109, 125, 106, 62, 126, 79]
+let z : Region := {p | (masks p.1).getLsbD p.2.val = true}
+let edge := fun (r c : Fin 7) => !(masks r).getLsbD c.val
+let rect := fun (s : Region) => ∃ r c : Set (Fin 7), s = Set.prod r c
+let free := fun (F : Region → Prop) (s : Region) =>
+  ∀ P : Region → Prop, (∀ t, F t → P t) →
+    (∀ a b, P a → P b → P (a ∩ b)) → P s
+let addWire := fun (F : Region → Prop) (w t : Region) => F t ∨ t = w
+let two := fun (F : Region → Prop) (s : Region) =>
+  ∃ a b, free F a ∧ free F b ∧
+    ∃ c d, free (addWire F (a ∪ b)) c ∧ free (addWire F (a ∪ b)) d ∧
+      free (addWire (addWire F (a ∪ b)) (c ∪ d)) s
+let three := fun (F : Region → Prop) (s : Region) =>
+  ∃ a b, free F a ∧ free F b ∧ two (addWire F (a ∪ b)) s
+let formula := fun (n : Nat) (s : Region) =>
+  ∀ P : Nat → Region → Prop, (∀ t, rect t → P 0 t) →
+    (∀ i j a b, P i a → P j b → P (i+j) (a ∩ b)) →
+    (∀ i j a b, P i a → P j b → P (i+j+1) (a ∪ b)) → P n s
+(∀ r s c d : Fin 7, r ≠ s → c ≠ d →
+  ¬ (edge r c = true ∧ edge r d = true ∧ edge s c = true ∧ edge s d = true)) ∧
+three rect z ∧ ¬ two rect z ∧ formula 4 z ∧ ∀ n, n < 4 → ¬ formula n z
