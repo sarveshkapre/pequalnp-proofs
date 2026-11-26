@@ -1,0 +1,17 @@
+∀ {V : Type} [DecidableEq V] (d q : Nat)
+    (tag : V → Nat × Nat) (path : V → Nat → Nat) (earlier : V → Finset V)
+    (same : ∀ x y, tag x = tag y →
+      path x (tag x).1 = path y (tag x).1 → x = y)
+    (back : ∀ x y, y ∈ earlier x →
+      (tag y).1 ≤ (tag x).1 ∧ ∀ i, i ≤ (tag y).1 → path x i = path y i)
+    (A B : Fin d → V → Prop)
+    (branch : ∀ x y, (∀ i, i ≤ (tag x).1 → i ≤ (tag y).1 → path x i = path y i) ↔
+      ¬ ∃ j, A j x ∧ B j y)
+    (red blue : Fin q → Nat × Nat → Prop)
+    (distinguish : ∀ x y,
+      tag x ∉ (earlier y).image tag → tag y ∉ (earlier x).image tag →
+      ∃ j, red j (tag x) ∧ blue j (tag y) ∧
+        (∀ u ∈ earlier y, ¬ red j (tag u)) ∧
+        (∀ v ∈ earlier x, ¬ blue j (tag v))),
+∃ (L R : Fin (d+q) → Set V), ∀ x y,
+      (y ∉ earlier x ∧ x ∉ earlier y) ↔ ∃ j, x ∈ L j ∧ y ∈ R j

@@ -6,7 +6,7 @@ Work in pjscruggs's bipartite grid model. Row and column stars are the inputs, u
 
     log₂ N − O_Δ(1) ≤ C ≤ F ≤ B−1 ≤ log₂ N + O_{Δ,w}(log₂ log₂ N).
 
-In particular, F/C tends to one uniformly on trees of bounded maximum degree. A two-intersection saving is still possible under this estimate. Whether any tree actually attains it is open here. A family with a circuit-to-formula ratio bounded away from one would need unbounded maximum degree on any subsequence realizing that ratio.
+In particular, F/C tends to one uniformly on trees of bounded maximum degree. A two-intersection saving is still possible under this estimate. Whether any tree actually attains it is open here. The [balanced-decomposition bound](../balanced-forest/README.md) now rules out a persistent proportional saving on every forest, including trees with unbounded degree. The degree bound here gives a smaller additive remainder in the upper bound in N.
 
 Even the additive order of the **flat** upper bound is best possible: B ≥ log₂ N + ½ log₂ log₂ N − O_Δ(1). The coefficient of the upper correction and the size of the saving F−C remain undetermined. Arbitrarily many isolated vertices can be added at a cost of at most two further intersections: extend the old labels to the new vertices by duplication, then intersect with the free union of the active rows and with the free union of the active columns. Thus one may count only nonisolated vertices in N. The edgeless graph itself costs zero.
 
