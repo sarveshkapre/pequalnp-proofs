@@ -1,0 +1,12 @@
+∀ (r c k d m : Nat) (A : Fin k → Bool → Set (Fin r)) (B : Fin k → Bool → Set (Fin c))
+      (deps : Fin k → Bool → Fin k → Prop) (level : Fin k → Nat)
+      (wire : Fin k → Fin r × Fin c → Prop) (row : Set (Fin r)) (col : Set (Fin c))
+      (use : Fin k → Prop) (G : Fin r × Fin c → Prop) (points : Fin m → Fin r × Fin c),
+    (∀ i e j, deps i e j → level j < level i) →
+    (∀ i x, wire i x ↔ ∀ e, x.1 ∈ A i e ∨ x.2 ∈ B i e ∨ ∃ j, deps i e j ∧ wire j x) →
+    (∀ i, use i → level i ≤ d) →
+    (∀ x, G x ↔ x.1 ∈ row ∨ x.2 ∈ col ∨ ∃ i, use i ∧ wire i x) →
+    (∀ i, G (points i)) →
+    (∀ i j, i ≠ j → ¬ (G ((points i).1,(points j).2) ∧ G ((points j).1,(points i).2))) →
+    m ≤ Fintype.card {s : Finset ((Fin k × ((Bool × Bool) ⊕ (Bool × Bool))) ⊕ Bool) //
+      s.card ≤ 2^d}

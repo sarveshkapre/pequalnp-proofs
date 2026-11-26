@@ -1,0 +1,10 @@
+∀ (r c g h : Nat) (A : Nat → Fin g → Bool → Set (Fin r))
+      (B : Nat → Fin g → Bool → Set (Fin c)) (row : Set (Fin r)) (col : Set (Fin c))
+      (P : Nat → Nat → Set (Fin r × Fin c) → Prop),
+    (∀ d (U : Set (Fin r)), P 0 d {x | x.1 ∈ U}) →
+    (∀ d (V : Set (Fin c)), P 0 d {x | x.2 ∈ V}) →
+    (∀ i j d U V, P i d U → P j d V → P (i+j) d (U ∪ V)) →
+    (∀ i j d U V, P i d U → P j d V → P (i+j+1) (d+1) (U ∩ V)) →
+    ∃ k, k+1 = (2^g+1)*2^h ∧ P k (h+1)
+      {x | ¬ (x.1 ∈ row ∨ x.2 ∈ col ∨ ∃ t < 2^h, ∃ i : Fin g,
+        ∀ e : Bool, x.1 ∈ A t i e ∨ x.2 ∈ B t i e)}
