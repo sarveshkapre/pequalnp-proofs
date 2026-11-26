@@ -1,0 +1,11 @@
+∀ (m n k : Nat) (z : Set (Fin m × Fin n)),
+  let R := Set (Fin m × Fin n)
+  (∀ P : Nat → R → Prop,
+    (∀ (a : Set (Fin m)) (b : Set (Fin n)), P 0 (Set.prod a b)) →
+    (∀ i j a b, P i a → P j b → P (i+j) (a ∩ b)) →
+    (∀ i j a b, P i a → P j b → P (i+j+1) (a ∪ b)) → P k z) →
+  ∃ s ≤ max 2 (4*k), ∀ P : Nat → R → Prop,
+    (∀ a : Set (Fin m), P 1 (Set.prod a Set.univ)) →
+    (∀ b : Set (Fin n), P 1 (Set.prod Set.univ b)) →
+    (∀ i j a b, P i a → P j b → P (i+j) (a ∩ b)) →
+    (∀ i j a b, P i a → P j b → P (i+j) (a ∪ b)) → P s z

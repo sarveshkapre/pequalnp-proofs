@@ -1,0 +1,13 @@
+∀ (m n k : Nat),
+  let R := Set (Fin m × Fin n)
+  let B : Set R := {z | (∃ a : Set (Fin m), z = Set.prod a Set.univ) ∨
+                         (∃ b : Set (Fin n), z = Set.prod Set.univ b)}
+  let free := fun (s : Set R) => {z : R | ∃ t ⊆ s, ⋃₀ t = z}
+  ∀ U : Set R,
+    (∀ P : Nat → Set R → Prop, P 0 B →
+      (∀ i W (a b : R), P i W → a ∈ W → b ∈ W → aᶜ ∈ W → bᶜ ∈ W →
+        P (i+1) (insert (a ∩ b) (insert (a ∩ b)ᶜ W))) → P k U) →
+    ∃ V : Set R, U ⊆ V ∧
+      ∀ P : Nat → Set R → Prop, P 0 (free B) →
+        (∀ i W (a b : R), P i W → a ∈ W → b ∈ W →
+          P (i+1) (free (insert (a ∩ b) W))) → P k V
