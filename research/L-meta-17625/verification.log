@@ -1,0 +1,76 @@
+Lean 4.36.0. Local clean build and standalone kernel replay.
+Building routing/RoutingThree.lean
+'ResidualRouting.two_edges_require_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/ResidualDegree.lean
+'ResidualDegree.plane_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/SwitchCore.lean
+'SwitchCore.equal_budget_forces_opposite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SwitchCore.matched_pairs_le_gates' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building routing/CentreSeparation.lean
+'CentreSeparation.separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CentreSeparation.ordinaryStars' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/ExtremalCover.lean
+'ExtremalCover.transversals' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/SourceBudget.lean
+'ResidualSourceBudget.pays_with_one_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidualSourceBudget.possible_obstructions' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/StarPromotions.lean
+'StarPromotions.raw_neighbors_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/StarGrowth.lean
+'StarGrowth.all_raw_sparse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StarGrowth.first_changes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StarGrowth.centre_changes' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/OneExceptionalOr.lean
+'OneExceptionalOr.only_one_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/RepeatCharge.lean
+'ResidualDegree.plane_repeat_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/SharedSwitch.lean
+Building cover/MatchingTransfer.lean
+'ResidualDegree.transfer_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/FourEdges.lean
+'PlaneFour.four_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneFour.small_plane_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/CentreSwitch.lean
+'CentreSwitch.strict_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building routing/OrdinaryExtremal.lean
+'CentreSeparation.extremal' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/ProtectedTriple.lean
+'ProtectedResiduals.limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/SlackExample.lean
+'OneSpareCoverSlot.obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/StarGeometry.lean
+'PlaneStar.unique_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneStar.centers_and_leaves' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/PlaneBudget.lean
+'PlaneBudget.four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/ThreeStates.lean
+'ThreeStates.capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building routing/CentreTransfer.lean
+'CentreSeparation.cover_saves_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CentreSeparation.repeat_charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/ExtremalRouting.lean
+'ProtectedResiduals.extremal_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProtectedResiduals.cover_saves_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/PlaneBound.lean
+'PlaneBound.star_needs_more' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneBound.four_size' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneBound.five_required' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneBound.repeat_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building shared/ThreeStatesExtremal.lean
+'ThreeStates.smaller_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/ThreeBranches.lean
+'ResidualDegree.repeated_reads_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building plane/PlaneDesk.lean
+'PlaneDesk.four_for_desk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PlaneDesk.five_for_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building cover/GeneralThree.lean
+'GeneralThree.tight_if_failed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralThree.matching_after_deletion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralThree.remaining' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PlaneDesk
+replaying PlaneBound
+replaying GeneralThree
+replaying ThreeStatesExtremal
+replaying SlackExample
+replaying OneExceptionalOr
+Verified PlaneDesk, PlaneBound, GeneralThree, ThreeStatesExtremal, SlackExample, OneExceptionalOr at upstream e6bfe1a56efc768d244627b78f175b18de1acd6f.
