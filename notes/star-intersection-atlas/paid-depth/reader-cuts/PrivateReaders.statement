@@ -1,0 +1,16 @@
+∀ (k : Nat) (dep : Fin k → Bool → Fin k → Prop)
+  (raw : Fin k → Bool → Prop) (need : Fin k → Prop),
+  let arm (X : Fin k → Prop) (i : Fin k) (e : Bool) :=
+    raw i e ∨ ∃ j, dep i e j ∧ X j
+  let reads (v i : Fin k) := ∃ e, dep i e v
+  let hit (W : Finset (Fin k)) (i : Fin k) (e : Bool) := ∃ v ∈ W, dep i e v
+  let untouched (W : Finset (Fin k)) (i : Fin k) := i ∉ W ∧ ∀ e, ¬ hit W i e
+  (∃ X : Fin k → Prop, (∀ i, (∀ e, arm X i e) → X i) ∧ ∀ i, need i → ¬ X i) ↔
+    ∃ W : Finset (Fin k),
+      (∀ v ∈ W, ∃ i, reads v i ∧ ∀ u ∈ W, reads u i → u = v) ∧
+      ∃ Y : Fin k → Prop,
+        (∀ i ∈ W, Y i) ∧
+        (∀ i e, hit W i e → arm Y i (!e) → Y i) ∧
+        (∀ i, untouched W i → (∀ e, raw i e) → Y i) ∧
+        (∀ i, untouched W i → ∀ v, reads v i → ¬ Y v) ∧
+        ∀ i, need i → ¬ Y i

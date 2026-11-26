@@ -1,0 +1,22 @@
+∀ (k r : Nat) (early : Finset (Fin k))
+  (dep : Fin k → Bool → Fin k → Prop) (raw : Fin k → Bool → Prop)
+  (need : Fin k → Prop),
+  (∀ i ∈ early, ∀ e j, dep i e j → j ∈ early) →
+  let arm (X : Fin k → Prop) (i : Fin k) (e : Bool) :=
+    raw i e ∨ ∃ j, dep i e j ∧ X j
+  let hit (W : Finset (Fin k)) (i : Fin k) (e : Bool) :=
+    ∃ j ∈ W, dep i e j
+  let rejects := ∃ X : Fin k → Prop,
+    (∀ i, (∀ e, arm X i e) → X i) ∧ ∀ i, need i → ¬ X i
+  let small (T : Finset (Fin k)) :=
+    (∀ i ∈ early, (∀ e, arm (fun j => j ∈ T) i e) → i ∈ T) ∧
+    (∀ i ∈ T, ¬ need i) ∧ ∃ Y : Fin k → Prop,
+      (∀ i, i ∉ early → (∀ e, arm (fun j => if j ∈ early then j ∈ T else Y j) i e) → Y i) ∧
+      ∀ i, i ∉ early → need i → ¬ Y i
+  let large (W : Finset (Fin k)) := ∃ Y : Fin k → Prop,
+    (∀ i ∈ W, Y i) ∧
+    (∀ i, i ∉ W → (∀ e, ¬ hit W i e) → (∀ e, arm Y i e) → Y i) ∧
+    (∀ i e, hit W i e → arm Y i (!e) → Y i) ∧
+    ∀ i, need i → ¬ Y i
+  rejects ↔ (∃ T ⊆ early, T.card < r ∧ small T) ∨
+    ∃ W ⊆ early, W.card = r ∧ large W
