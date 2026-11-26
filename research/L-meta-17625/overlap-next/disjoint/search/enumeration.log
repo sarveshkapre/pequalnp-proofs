@@ -1,0 +1,20 @@
+positive controls: two ANDs, three ORs cover all three graph modes
+negative control: b or de passes two cover tests and fails the guarded model
+outside AAOO EXHAUSTED leaves 1735789
+outside AOAO EXHAUSTED leaves 1643751
+outside AOOA EXHAUSTED leaves 1529719
+outside OAAO EXHAUSTED leaves 1398410
+outside OAOA EXHAUSTED leaves 1310051
+outside OOAA EXHAUSTED leaves 1117103
+inside AAOO EXHAUSTED leaves 1735789
+inside AOAO EXHAUSTED leaves 1643751
+inside AOOA EXHAUSTED leaves 1529719
+inside OAAO EXHAUSTED leaves 1398410
+inside OAOA EXHAUSTED leaves 1310051
+inside OOAA EXHAUSTED leaves 1117103
+cross AAOO EXHAUSTED leaves 1735789
+cross AOAO EXHAUSTED leaves 1643751
+cross AOOA EXHAUSTED leaves 1529719
+cross OAAO EXHAUSTED leaves 1398410
+cross OAOA EXHAUSTED leaves 1310051
+cross OOAA EXHAUSTED leaves 1117103
