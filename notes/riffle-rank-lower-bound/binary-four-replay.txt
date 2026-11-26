@@ -1,0 +1,5 @@
+Width eight: 490314 unordered binary first-column dictionaries, zeros and repeats included.
+Minimum-distance test: 15 survivors. All 15 fail the zero-plane rank test.
+Width nine: 256 tensor entries verified over F2.
+GF(4) normalized cube: 85 projective targets, 7 off-column targets pass the secant test.
+GF(8) normalized cube: 585 projective targets, 7 off-column targets pass the secant test.

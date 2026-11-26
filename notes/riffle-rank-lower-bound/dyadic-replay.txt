@@ -1,0 +1,20 @@
+Upstream definition SHA-256 a43edc0c5d5e2fb75251499571cff0738a44ebb4976d1e2c8d4a3e7ebe856d02
+Lean (version 4.36.0, arm64-apple-darwin24.6.0, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+'RifflePencil.annihilator_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_lower_all_fields' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_lower_near_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_lower_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.rectangular_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_dyadic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_log_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.pair_dyadic_32' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.simplex_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.simplex_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleLower.four_exact_of_two_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PEqualNP.Defs.RiffleRank
+replaying PencilRank
+replaying ThreeLinear
+replaying SimplexOptimal
+replaying FourSymbols
+All 5 modules compiled and replayed.

@@ -24,7 +24,8 @@ def replay(repo):
         scratch = Path(tmp)
         (scratch / original.parent).mkdir(parents=True)
         copyfile(lean / original, scratch / original)
-        modules = [original, Path("PencilRank.lean"), Path("ThreeLinear.lean")]
+        modules = [original, Path("PencilRank.lean"), Path("ThreeLinear.lean"),
+                   Path("SimplexOptimal.lean"), Path("FourSymbols.lean")]
         for path in modules[1:]:
             copyfile(here / path, scratch / path)
         sub = lambda path: "(subpath " + json.dumps(str(path)) + ")"

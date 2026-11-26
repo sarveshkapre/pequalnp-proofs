@@ -1,5 +1,7 @@
 # An all-field lower bound for two-block riffle rank
 
+The [logarithmic-deficit theorem](DYADIC.md) raises the 32-symbol lower bound to 89 and gives an exact rectangular family. At four symbols the [field comparison](FOUR-SYMBOLS.md) gives eight terms outside characteristic two and nine in characteristic two. Each note states its verification scope. The original square-root bound and proof follow.
+
 Let \(R_F(n,2)\) be the minimum number of exact riffle-basic terms for the two-block identity over a field \(F\). For every \(1\le m\le n\),
 
 $$

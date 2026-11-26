@@ -5,6 +5,7 @@ import Mathlib.Algebra.BigOperators.Fin
 import Mathlib.FieldTheory.RatFunc.Basic
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
+import Mathlib.Data.Nat.Log
 
 open Finset PEqualNP.RiffleRank
 open scoped BigOperators
@@ -17,7 +18,8 @@ private theorem sandwich_apply {F : Type} [Field F] {n r : ℕ}
   rw [Matrix.mul_apply]
   simp_rw [Matrix.mul_diagonal]
 
-private def Dictionary (F : Type) [Field F] (r k n : ℕ) : Prop :=
+/-- A shared width-r first-factor dictionary for k targets, each decoding an n by n identity. -/
+def Dictionary (F : Type) [Field F] (r k n : ℕ) : Prop :=
   ∃ (A : Fin r → Fin k → F) (C : Fin k → Fin n → Fin r → F)
       (D : Fin k → Fin r → Fin n → F), ∀ a b c d,
     ∑ i, C b c i * A i a * D b i d = if a = b ∧ c = d then 1 else 0
@@ -202,5 +204,140 @@ theorem pair_lower_32 {F : Type} [Field F] {r : ℕ}
 
 #print axioms pair_lower_near_three
 #print axioms pair_lower_32
+
+/-- Quotient by a *target* and delete every resulting zero column. -/
+private theorem drop_target {F : Type} [Field F] [Infinite F] {k n r : ℕ}
+    (dict : Dictionary F r (k+1) n) :
+    ∃ q, Dictionary F q k n ∧ 2*n + q ≤ 2*r := by
+  classical
+  obtain ⟨A, C, D, dec⟩ := dict
+  let live (i : Fin r) := ∃ a : Fin k, A i a.succ ≠ 0
+  let S := (univ : Finset (Fin r)).filter live
+  let ev (i : Fin r) : (Fin k → F) →ₗ[F] F :=
+    ∑ a : Fin k, A i a.succ • LinearMap.proj a
+  have witnesses (i : {i // live i}) : ∃ x, ev i x ≠ 0 := by
+    obtain ⟨a,ha⟩ := i.property
+    refine ⟨Pi.single a 1, ?_⟩
+    simp only [ev, LinearMap.sum_apply, LinearMap.smul_apply, smul_eq_mul,
+      LinearMap.proj_apply, Pi.single_apply]
+    rw [sum_eq_single a]
+    · simpa using ha
+    · intro b _ hb; simp [hb]
+    · simp
+  obtain ⟨x,hx⟩ := Module.Dual.exists_forall_ne_zero_of_forall_exists
+    (fun i : {i // live i} => ev i) witnesses
+  let L : Matrix (Fin n) (Fin r) F := C 0
+  let R : Matrix (Fin r) (Fin n) F := D 0
+  have detect : L * Matrix.diagonal (fun i => A i 0) * R = 1 := by
+    ext c d
+    rw [sandwich_apply, Matrix.one_apply]
+    simpa [L,R] using dec 0 0 c d
+  have kill : L * Matrix.diagonal (fun i => ev i x) * R = 0 := by
+    ext c d
+    rw [sandwich_apply, Matrix.zero_apply]
+    simp only [ev, LinearMap.sum_apply, LinearMap.smul_apply, LinearMap.proj_apply, smul_eq_mul]
+    calc
+      _ = ∑ i, ∑ a : Fin k, x a * (C 0 c i * A i a.succ * D 0 i d) := by
+        apply sum_congr rfl; intro i _
+        rw [mul_sum, sum_mul]
+        apply sum_congr rfl; intro a _; dsimp [L,R]; ring
+      _ = 0 := by
+        rw [sum_comm]
+        apply sum_eq_zero
+        intro a _
+        rw [← mul_sum, dec]
+        simp
+  have count := RifflePencil.annihilator_count L R _ _ detect kill
+  have incl : S.card ≤ (univ.filter (fun i : Fin r => ev i x ≠ 0)).card :=
+    card_le_card (fun i hi => mem_filter.mpr ⟨mem_univ _, hx ⟨i,(mem_filter.mp hi).2⟩⟩)
+  simp only [Fintype.card_subtype] at count
+  let e : Fin S.card ≃ ↥S := (Finset.equivFinOfCardEq rfl).symm
+  refine ⟨S.card, ⟨fun i a => A (e i) a.succ, fun b c i => C b.succ c (e i),
+    fun b i d => D b.succ (e i) d, ?_⟩, by omega⟩
+  intro a b c d
+  let f (i : Fin r) := C b.succ c i * A i a.succ * D b.succ i d
+  calc
+    _ = ∑ i : ↥S, f i := e.sum_comp (fun i : ↥S => f i)
+    _ = ∑ i ∈ S, f i := Finset.sum_coe_sort S f
+    _ = ∑ i, f i := by
+      apply sum_subset (subset_univ S)
+      intro i _ hi
+      have hz : A i a.succ = 0 := by
+        by_contra hn
+        exact hi (mem_filter.mpr ⟨mem_univ _,a,hn⟩)
+      simp [f,hz]
+    _ = _ := by simpa [f] using dec a.succ b.succ c d
+
+private theorem rect_infinite {F : Type} [Field F] [Infinite F] {n : ℕ} (j : ℕ) :
+    ∀ {r}, Dictionary F r (j+1) n → 2*n ≤ r + n/2^j := by
+  induction j with
+  | zero =>
+    intro r h
+    have bound := pack (by decide : 0 < 1) h
+    simp at bound ⊢
+    omega
+  | succ j ih =>
+    intro r h
+    obtain ⟨q, small, bound⟩ := drop_target h
+    have prev := ih small
+    rw [pow_succ, ← Nat.div_div_eq_div_mul]
+    omega
+
+/-- Dyadic rectangular bound for arbitrary overlapping rank-one decoders over any field. -/
+theorem rectangular_dyadic {F : Type} [Field F] {n r j : ℕ}
+    (h : Dictionary F r (j+1) n) : 2*n ≤ r + n/2^j := by
+  classical
+  let K := RatFunc F
+  let _ : Infinite K := Infinite.of_injective _ (RatFunc.algebraMap_injective F)
+  let φ := algebraMap F K
+  obtain ⟨A,C,D,dec⟩ := h
+  apply rect_infinite (F := K) j
+  refine ⟨fun i a => φ (A i a), fun b c i => φ (C b c i), fun b i d => φ (D b i d), ?_⟩
+  intro a b c d
+  simpa only [map_sum, map_mul, apply_ite φ, map_one, map_zero] using congrArg φ (dec a b c d)
+
+theorem pair_dyadic {F : Type} [Field F] {n r j : ℕ}
+    (dec : RiffleRankLe r (pairId (Fin n) F)) (hj : j+1 ≤ n) :
+    3*n ≤ r + (j+1) + n/2^j := by
+  have hn : 0 < n := by omega
+  have reduce (s : ℕ) : ∀ {t}, Dictionary F t (j+1+s) n →
+      2*n+s ≤ t+n/2^j := by
+    induction s with
+    | zero => intro t h; simpa using rectangular_dyadic h
+    | succ s ih =>
+      intro t h
+      cases t with
+      | zero =>
+        obtain ⟨A,C,D,hd⟩ := h
+        obtain ⟨i,_⟩ := pivot hn A C D hd
+        exact Fin.elim0 i
+      | succ t =>
+        have out := ih (shorten hn h)
+        omega
+  have dict : Dictionary F r (j+1+(n-(j+1))) n := by
+    simpa [Nat.add_sub_of_le hj] using from_riffle dec
+  have bound := reduce _ dict
+  omega
+
+/-- The additive deficit from three times the alphabet size is at most log₂(n)+2. -/
+theorem pair_log_lower {F : Type} [Field F] {n r : ℕ}
+    (dec : RiffleRankLe r (pairId (Fin n) F)) (hn : 0 < n) :
+    3*n ≤ r + Nat.log 2 n + 2 := by
+  have bound := pair_dyadic dec (Nat.log_lt_self 2 hn.ne')
+  have ht := Nat.lt_pow_succ_log_self (b := 2) (by decide) n
+  rw [pow_succ] at ht
+  have hd : n / 2^(Nat.log 2 n) < 2 :=
+    (Nat.div_lt_iff_lt_mul (by positivity)).2 (by simpa [Nat.mul_comm] using ht)
+  omega
+
+theorem pair_dyadic_32 {F : Type} [Field F] {r : ℕ}
+    (dec : RiffleRankLe r (pairId (Fin 32) F)) : 89 ≤ r := by
+  have h := pair_dyadic (j := 5) dec (by decide)
+  omega
+
+#print axioms rectangular_dyadic
+#print axioms pair_dyadic
+#print axioms pair_log_lower
+#print axioms pair_dyadic_32
 
 end RiffleLower
