@@ -1,0 +1,28 @@
+import PEqualNP.FiveRows.Audit
+import PEqualNP.FiveRows.ThresholdProof
+
+theorem PEqualNP.FiveRows.AllWidths :
+    ∀ n : Nat,
+      let R := Set (Fin 5 × Fin n)
+      let rect := fun (s : R) => ∃ I : Set (Fin 5), ∃ J : Set (Fin n), s = Set.prod I J
+      let free := fun (F : R → Prop) (s : R) =>
+        ∀ P : R → Prop, (∀ t, F t → P t) → (∀ a b, P a → P b → P (a ∩ b)) → P s
+      let add := fun (F : R → Prop) (w t : R) => F t ∨ t = w
+      let two := fun (F : R → Prop) (s : R) =>
+        ∃ a b, free F a ∧ free F b ∧ ∃ c d,
+          free (add F (a ∪ b)) c ∧ free (add F (a ∪ b)) d ∧
+          free (add (add F (a ∪ b)) (c ∪ d)) s
+      let three := fun (F : R → Prop) (s : R) =>
+        ∃ a b, free F a ∧ free F b ∧ two (add F (a ∪ b)) s
+      let formula := fun (k : Nat) (s : R) =>
+        ∀ P : Nat → R → Prop, (∀ t, rect t → P 0 t) →
+          (∀ i j a b, P i a → P j b → P (i+j) (a ∩ b)) →
+          (∀ i j a b, P i a → P j b → P (i+j+1) (a ∪ b)) → P k s
+      (∃ z : R, three rect z ∧ ¬ two rect z ∧ formula 4 z ∧
+        ∀ k, k < 4 → ¬ formula k z) ↔ 7 ≤ n := by
+  intro n
+  change (∃ z : FiveRowsAudit.Region n, FiveRowsAudit.three TwoIntersections.Rectangle z ∧
+    ¬ FiveRowsAudit.two TwoIntersections.Rectangle z ∧ FiveRowsAudit.tree 4 z ∧
+    ∀ k, k < 4 → ¬ FiveRowsAudit.tree k z) ↔ 7 ≤ n
+  simp only [FiveRowsAudit.three_eq, FiveRowsAudit.two_eq, FiveRowsAudit.tree_eq]
+  exact FiveRowThreshold.gap_iff_seven_le n
