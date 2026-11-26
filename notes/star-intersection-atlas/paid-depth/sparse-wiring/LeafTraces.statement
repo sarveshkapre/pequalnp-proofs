@@ -1,0 +1,9 @@
+∀ (r h : Nat) (R C : Type)
+    (baseR : (Fin r → Bool) → (Fin h → Bool) → R → Prop)
+    (baseC : (Fin r → Bool) → (Fin h → Bool) → C → Prop)
+    (needed : (Fin r → Bool) → (Fin h → Bool) → Fin h → Prop)
+    (leafR : Fin h → Bool → R → Prop) (leafC : Fin h → Bool → C → Prop),
+  ∃ (rows : Fin (2^r * 3^h) → R → Prop) (cols : Fin (2^r * 3^h) → C → Prop),
+    ∀ x y, (∃ (z : Fin r → Bool) (p l : Fin h → Bool), baseR z p x ∧ baseC z p y ∧
+      ∀ i, needed z p i → p i = true → leafR i (l i) x ∧ leafC i (l i) y) ↔
+      ∃ j, rows j x ∧ cols j y

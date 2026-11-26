@@ -1,0 +1,6 @@
+∀ (m L q : Nat) (cap : Fin m → Nat) (items : List Nat),
+  (∀ w ∈ items, 0 < w ∧ w ≤ L) → m * (L-1) ≤ q →
+  items.sum + q ≤ ∑ b, cap b →
+  ∃ placement : List (Fin m × Nat),
+    placement.map Prod.snd = items ++ List.replicate q 1 ∧
+    ∀ b, (placement.map fun slot => if slot.1 = b then slot.2 else 0).sum ≤ cap b
