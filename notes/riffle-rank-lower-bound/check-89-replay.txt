@@ -1,0 +1,5 @@
+All 39711 Boolean column triples checked by integer Gram determinant.
+301 dependent triples. Point degrees: {10: 35, 16: 21, 31: 7}.
+Positive control: 7 targets, 32 disjoint recoveries each; all 64 one-column quotients verified.
+Pair contraction would give 14560 flags, remainder 1 modulo 3.
+Six contractions would give 1288682824/3 nine-element dependent sets.

@@ -41,16 +41,21 @@ private theorem pivot {F : Type} [Field F] {k n r : ℕ} (hn : 0 < n)
   have h := decode 0 0 ⟨0, hn⟩ ⟨0, hn⟩
   simp [hz] at h
 
-private theorem shorten {F : Type} [Field F] {k n r : ℕ} (hn : 0 < n)
-    (h : Dictionary F (r+1) (k+1) n) : Dictionary F r k n := by
+/-- Contract a specified column using its nonzero zeroth coefficient. All other
+first factors are the actual quotient images in the remaining coordinate basis. -/
+theorem contract_column {F : Type} [Field F] {k n r : ℕ}
+    (A : Fin (r+1) → Fin (k+1) → F) (C : Fin (k+1) → Fin n → Fin (r+1) → F)
+    (D : Fin (k+1) → Fin (r+1) → Fin n → F)
+    (decode : ∀ a b c d, ∑ i, C b c i * A i a * D b i d =
+      if a = b ∧ c = d then 1 else 0) (p : Fin (r+1)) (hp : A p 0 ≠ 0) :
+    ∀ (a b : Fin k) (c d : Fin n),
+      ∑ i : Fin r, C b.succ c (p.succAbove i) *
+        (A (p.succAbove i) a.succ - (A p a.succ / A p 0) * A (p.succAbove i) 0) *
+        D b.succ (p.succAbove i) d = if a = b ∧ c = d then 1 else 0 := by
   classical
-  obtain ⟨A, C, D, decode⟩ := h
-  obtain ⟨p, hp⟩ := pivot hn A C D decode
   let q a := A p (Fin.succ a) / A p 0
   let B (i : Fin (r+1)) (a : Fin k) := A i a.succ - q a * A i 0
   have erased (a : Fin k) : B p a = 0 := by simp [B, q, hp]
-  refine ⟨fun i => B (p.succAbove i), fun b c i => C b.succ c (p.succAbove i),
-    fun b i d => D b.succ (p.succAbove i) d, ?_⟩
   intro a b c d
   let term i := C b.succ c i * B i a * D b.succ i d
   have all : ∑ i, term i = if a = b ∧ c = d then 1 else 0 := by
@@ -60,7 +65,13 @@ private theorem shorten {F : Type} [Field F] {k n r : ℕ} (hn : 0 < n)
             apply sum_congr rfl; intro i _; dsimp [term, B]; ring
       _ = _ := by rw [sum_sub_distrib, ← mul_sum, decode, decode]; simp [Ne.symm b.succ_ne_zero]
   rw [Fin.sum_univ_succAbove term p] at all
-  simpa [term, erased] using all
+  simpa only [term, erased, mul_zero, zero_mul, zero_add] using all
+
+private theorem shorten {F : Type} [Field F] {k n r : ℕ} (hn : 0 < n)
+    (h : Dictionary F (r+1) (k+1) n) : Dictionary F r k n := by
+  obtain ⟨A,C,D,dec⟩ := h
+  obtain ⟨p,hp⟩ := pivot hn A C D dec
+  exact ⟨_,_,_,contract_column A C D dec p hp⟩
 
 private theorem pack {F : Type} [Field F] [Infinite F] {k n r : ℕ}
     (hk : 0 < k) (dict : Dictionary F r k n) : k*(2*n) ≤ (k+1)*r := by
@@ -205,12 +216,19 @@ theorem pair_lower_32 {F : Type} [Field F] {r : ℕ}
 #print axioms pair_lower_near_three
 #print axioms pair_lower_32
 
-/-- Quotient by a *target* and delete every resulting zero column. -/
-private theorem drop_target {F : Type} [Field F] [Infinite F] {k n r : ℕ}
-    (dict : Dictionary F r (k+1) n) :
-    ∃ q, Dictionary F q k n ∧ 2*n + q ≤ 2*r := by
+noncomputable def outsideTarget {F : Type} [Field F] {r k : ℕ}
+    (A : Fin r → Fin (k+1) → F) : ℕ := by
   classical
-  obtain ⟨A, C, D, dec⟩ := dict
+  exact (univ.filter (fun i => ∃ a : Fin k, A i a.succ ≠ 0)).card
+
+/-- The number of surviving columns counts the actual positions off the target line. -/
+theorem target_quotient {F : Type} [Field F] [Infinite F] {k n r : ℕ}
+    (A : Fin r → Fin (k+1) → F) (C : Fin (k+1) → Fin n → Fin r → F)
+    (D : Fin (k+1) → Fin r → Fin n → F)
+    (dec : ∀ a b c d, ∑ i, C b c i * A i a * D b i d =
+      if a = b ∧ c = d then 1 else 0) :
+    Dictionary F (outsideTarget A) k n ∧ 2*n + outsideTarget A ≤ 2*r := by
+  classical
   let live (i : Fin r) := ∃ a : Fin k, A i a.succ ≠ 0
   let S := (univ : Finset (Fin r)).filter live
   let ev (i : Fin r) : (Fin k → F) →ₗ[F] F :=
@@ -252,7 +270,8 @@ private theorem drop_target {F : Type} [Field F] [Infinite F] {k n r : ℕ}
     card_le_card (fun i hi => mem_filter.mpr ⟨mem_univ _, hx ⟨i,(mem_filter.mp hi).2⟩⟩)
   simp only [Fintype.card_subtype] at count
   let e : Fin S.card ≃ ↥S := (Finset.equivFinOfCardEq rfl).symm
-  refine ⟨S.card, ⟨fun i a => A (e i) a.succ, fun b c i => C b.succ c (e i),
+  change Dictionary F S.card k n ∧ 2*n + S.card ≤ 2*r
+  refine ⟨⟨fun i a => A (e i) a.succ, fun b c i => C b.succ c (e i),
     fun b i d => D b.succ (e i) d, ?_⟩, by omega⟩
   intro a b c d
   let f (i : Fin r) := C b.succ c i * A i a.succ * D b.succ i d
@@ -267,6 +286,11 @@ private theorem drop_target {F : Type} [Field F] [Infinite F] {k n r : ℕ}
         exact hi (mem_filter.mpr ⟨mem_univ _,a,hn⟩)
       simp [f,hz]
     _ = _ := by simpa [f] using dec a.succ b.succ c d
+
+private theorem drop_target {F : Type} [Field F] [Infinite F] {k n r : ℕ}
+    (h : Dictionary F r (k+1) n) : ∃ q, Dictionary F q k n ∧ 2*n + q ≤ 2*r := by
+  obtain ⟨A,C,D,dec⟩ := h
+  exact ⟨_,target_quotient A C D dec⟩
 
 private theorem rect_infinite {F : Type} [Field F] [Infinite F] {n : ℕ} (j : ℕ) :
     ∀ {r}, Dictionary F r (j+1) n → 2*n ≤ r + n/2^j := by
@@ -295,6 +319,20 @@ theorem rectangular_dyadic {F : Type} [Field F] {n r j : ℕ}
   refine ⟨fun i a => φ (A i a), fun b c i => φ (C b c i), fun b i d => φ (D b i d), ?_⟩
   intro a b c d
   simpa only [map_sum, map_mul, apply_ite φ, map_one, map_zero] using congrArg φ (dec a b c d)
+
+/-- Exact target-line multiplicity when the target-quotient inequalities meet. -/
+theorem optimal_target_quotient {F : Type} [Field F] [Infinite F] {j n r : ℕ}
+    (A : Fin r → Fin (j+1+1) → F) (C : Fin (j+1+1) → Fin n → Fin r → F)
+    (D : Fin (j+1+1) → Fin r → Fin n → F)
+    (dec : ∀ a b c d, ∑ i, C b c i * A i a * D b i d =
+      if a = b ∧ c = d then 1 else 0) (tight : 2*r + n/2^j = 4*n) :
+    outsideTarget A + n/2^j = 2*n := by
+  obtain ⟨dict,cap⟩ := target_quotient A C D dec
+  have lower := rectangular_dyadic dict
+  omega
+
+#print axioms contract_column
+#print axioms optimal_target_quotient
 
 theorem pair_dyadic {F : Type} [Field F] {n r j : ℕ}
     (dec : RiffleRankLe r (pairId (Fin n) F)) (hj : j+1 ≤ n) :
