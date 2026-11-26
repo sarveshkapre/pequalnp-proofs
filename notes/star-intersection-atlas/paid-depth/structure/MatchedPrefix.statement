@@ -1,0 +1,20 @@
+∀ (s n : Nat) (I : Type) (raw : (Fin s ⊕ Fin n) → Bool → I → Prop)
+      (dep : (Fin s ⊕ Fin n) → Bool → (Fin s ⊕ Fin n) → Prop)
+      (level : (Fin s ⊕ Fin n) → Nat) (wire : (Fin s ⊕ Fin n) → I → Prop),
+    (∀ i e j, dep i e j → level j < level i) →
+    (∀ i e j, ¬dep (.inr i) e (.inr j)) →
+    (∀ i x, wire i x ↔ ∀ e, raw i e x ∨ ∃ j, dep i e j ∧ wire j x) →
+    ∀ (need : Fin s → Prop) (keep extra : Fin n → Prop) (x : I),
+      ((∀ i, need i → ¬wire (.inl i) x) ∧
+       (∀ j, keep j ∨ extra j → ¬wire (.inr j) x)) ↔
+      ∃ right : Fin n → Bool,
+        (∀ j, extra j → ¬raw (.inr j) (right j) x) ∧
+        ∃ σ : Fin s → Option Bool,
+          (∀ i, need i → (σ i).isSome = true) ∧
+          (∀ j, extra j → ∀ i, dep (.inr j) (right j) (.inl i) → (σ i).isSome = true) ∧
+          (∀ i e, σ i = some e → ¬raw (.inl i) e x ∧
+             ∀ j, dep (.inl i) e (.inl j) → (σ j).isSome = true) ∧
+          ∃ left : Fin n → Bool, ∀ j,
+            (keep j ∨ ∃ i e, σ i = some e ∧ dep (.inl i) e (.inr j)) →
+            ¬raw (.inr j) (left j) x ∧
+             ∀ i, dep (.inr j) (left j) (.inl i) → (σ i).isSome = true

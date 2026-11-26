@@ -8,6 +8,8 @@ Use the star model of the intersection atlas. A raw signal is a free union of ro
 
 **Circuit consequence.** Allow unrestricted reuse and put w equal to the treewidth of the undirected dependency graph of the paid source gates. The endpoints of an edge are a gate and a paid input to one of its arms. If w=o(k), the worst complement cost at fixed D is at most 2^(k/m+o(k)). Any excess of εk in the exponent, for fixed ε>0, requires linear treewidth. If r gates are read more than once (including the final output), the upper bound is also O_D(3^r·2^((k−r)/m)). These assertions concern source wiring. No independence or sparsity of the output graph is required.
 
+For circuits of arbitrary wiring, the [two-layer upper bound](UNRESTRICTED.md) places the worst exponent at most 3/5.
+
 ## Separate the source gates
 
 Suppose deletion of s gates partitions the remaining gates into m blocks of sizes b₁,…,bₘ, with no dependency between different blocks. The blocks need not be contiguous in evaluation order. Then the complement has a **formula** of depth at most 1+ceil(log₂ m) and cost at most
