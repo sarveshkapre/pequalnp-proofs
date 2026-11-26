@@ -1,0 +1,12 @@
+let Cell := Fin 6 × Fin 6
+let mask : Nat → Nat := fun r => ([49, 42, 22, 13, 3] : List Nat).getD r 0
+let G : Finset Cell := Finset.univ.filter (fun p => (mask (p.1.val % 5)).testBit p.2.val)
+¬ ∃ (I : Fin (3+1) → Finset Cell)
+    (A B : Fin (3+1) → Fin 2 → Finset (Fin 6))
+    (S : Fin (3+1) → Fin 2 → Finset (Fin (3+1))),
+    (∀ t e, ∀ r ∈ S t e, r < t) ∧
+    (∀ t, t ≠ Fin.last 3 → ∀ p : Cell, p ∈ I t ↔ ∀ e : Fin 2,
+      (p.1 ∈ A t e ∨ p.2 ∈ B t e ∨ ∃ r ∈ S t e, p ∈ I r)) ∧
+    (∀ p : Cell, p ∈ I (Fin.last 3) ↔
+      (p.1 ∈ A (Fin.last 3) 0 ∨ p.2 ∈ B (Fin.last 3) 0 ∨
+        ∃ r ∈ S (Fin.last 3) 0, p ∈ I r)) ∧ I (Fin.last 3) = G
