@@ -1,0 +1,6 @@
+'ChainHamming.adjacent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ChainHamming.single_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ChainHamming.partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+lean ChainHamming.lean OK 4.20s
+replaying ChainHamming
+leanchecker ChainHamming OK 10.19s

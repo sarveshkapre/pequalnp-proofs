@@ -1,0 +1,10 @@
+Fano all 49 cells, three raw clauses 9 errors, two parallel meets 9 errors, parallel representative assignments 2508224
+complete 34 row subset orbits 30 pair representatives 9606 triple representatives 20269474
+complete 36 pairs 217845001
+degree 24 rectangle model 2 leafless bound 7
+degree 24 rectangle model 3 leafless bound 14
+degree 24 rectangle model 4 leafless bound 24
+degree 5 rectangle model 5 positive trimmed bound 24
+degree 6 rectangle model 5 positive trimmed bound 30
+order four profiles 8747 shore-unordered boards 38259378 passing both independent 25-gain pair budgets 0
+order four profiles 8747 shore-unordered boards 38259378 passing both independent 24-gain pair budgets 84
