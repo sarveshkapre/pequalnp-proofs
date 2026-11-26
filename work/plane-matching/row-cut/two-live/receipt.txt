@@ -1,0 +1,62 @@
+Circuit search
+Core 0123 11 gates [24809]
+Active 0123 1 sets, 36 states
+Active 0124 0 sets, 0 states
+Active 0125 0 sets, 0 states
+Core 0134 14 gates [1200332, 430571, 430571, 144944, 430571, 144944, 144944, 44196]
+Active 0134 80 sets, 31302 states
+Active 0135 80 sets, 31302 states
+Active 0145 14 sets, 1858 states
+Active 0234 80 sets, 31302 states
+Active 0235 80 sets, 31302 states
+Active 0245 14 sets, 1858 states
+Active 0345 1 sets, 36 states
+Active 1234 144 sets, 42228 states
+Active 1235 0 sets, 0 states
+Active 1245 0 sets, 0 states
+Active 1345 0 sets, 0 states
+Active 2345 0 sets, 0 states
+All 15 fixed pairs; 2 distinct signed cores; {'sets': 494, 'nodes': 171224}
+29-gate control checked on 131072 inputs; all 24 one-flag 28-gate controls passed.
+
+Second circuit search
+Core 0123 11 gates [35231]
+Active 0123 1 sets, 36 states
+Active 0124 0 sets, 0 states
+Active 0125 0 sets, 0 states
+Core 0134 14 gates [2041006, 577098, 581885, 179165, 582053, 179174, 179558, 54426]
+Active 0134 80 sets, 34913 states
+Active 0135 80 sets, 34074 states
+Active 0145 14 sets, 1862 states
+Active 0234 80 sets, 34054 states
+Active 0235 80 sets, 33991 states
+Active 0245 14 sets, 1862 states
+Active 0345 1 sets, 36 states
+Active 1234 144 sets, 43913 states
+Active 1235 0 sets, 0 states
+Active 1245 0 sets, 0 states
+Active 1345 0 sets, 0 states
+Active 2345 0 sets, 0 states
+All 15 fixed pairs; 2 distinct signed cores; {'sets': 494, 'nodes': 184741}
+29-gate control checked on 131072 inputs; all 24 one-flag 28-gate controls passed.
+
+Small truth-table controls
+Brute-force truth-table controls: 162 monotone functions, 612 search verdicts agreed.
+
+Source-set formulas and Lean LRAT receipts
+0123 06b56ad3315c294e4ade736e0bad37a3b5627c44f1eff909946fcd272d9a7b9d 124048383537b74b6900005eeff654a57fdd7e2990525701c015b380cb06ace4 Verified LRAT for 1917 clauses and 812 actions.
+0124 2df374fefc9006ea0b415cb0d3cd533778ee702be208acf503eb546603d51942 98d78c53b19d3a429ba3cb7da046a0cefd786dfb094c05cfca4244cb64c29697 Verified LRAT for 1960 clauses and 809 actions.
+0125 3d17887decbf346fc0fc652864fd8d77be48706c78bc576975f26ddf4bb4e699 000f4b842d1ddb98d1f9c803e48f4374affd8f7db1275b04439862e02c37374b Verified LRAT for 2008 clauses and 844 actions.
+0134 819048d2dadb59cd693319bffa9bcb073647a759b5089f3cdaf56d1c2d6d8fde 1227e04010b1904637856da5453ee97b3ced1b9d9f8a23edf8e697f40aca74ad Verified LRAT for 931 clauses and 1004 actions.
+0135 f11d4e845e747af429d048ce4468b988e0104951f85dcb04e49cac813e72b547 ba72fca0476cbfbf1881e52d886bb0585189fea8f31b9b128bd8d846ea7518e5 Verified LRAT for 931 clauses and 1067 actions.
+0145 905bba7fc01ece0ed602136f3402ab7fc4b0d5a2c4bc6e472baea23089f1fc01 e7ef9994a18d2ebff1e063fe378858833c4f6e478ef19e74dd5edd1fd1bfbcc1 Verified LRAT for 865 clauses and 747 actions.
+0234 713d278a364f5342308a5475de2ef86f4517a27c3b475075c8c1c3d85e37ba47 4949fb13ed6618714d914a1cc814efa80a1c48685f90c9f79b681dfdf558fdce Verified LRAT for 931 clauses and 925 actions.
+0235 c982f4790bece19d9245e44955b081211852fa308c4dd7bd0e08611f1f22c6e1 cb845fe69ed878183811bd60e71e9a34f0536eaecdd6e3982c9047d7ef1f2c3b Verified LRAT for 931 clauses and 1059 actions.
+0245 9d11ad1025e85b81f7890891629188d5b2caf2ae79981c2a440d84cbc362e8e8 59886414f1d624d7421144dfae52e5c0feabf320582429d5ecb31e6be8ff9b23 Verified LRAT for 865 clauses and 917 actions.
+0345 4fc0427aae624e56b39bbbc46ff3b8fcf9487e968c959d42a9932b2e3bdf727a 60632f5e33d138f396babb1329d8cdfb3ead218dba7e16c7a56b99a3a0793d54 Verified LRAT for 1917 clauses and 817 actions.
+1234 8c6d58415f91048b5ac87bdc749fceb0a02646a22e0f16b9eac7dbae9f297e35 a83f3162f24d9f112da89c46c0542d94d3b593fcf3de0bd64c6f38ece01a801f Verified LRAT for 982 clauses and 1362 actions.
+1235 5c64b1fe3d2bc3865c33e7396bba5ae0c58c3362cfb7d53774f3421760e97105 ef905ffb0063762450aabdb741119584ca20b06dd6f1cab23794907e6598ac5c Verified LRAT for 864 clauses and 768 actions.
+1245 cf21903de1b3e7acd7f1db2561c3450c7f20d8420f2c37a1ce1a1ca1ad29b1f7 e573a67afc3df410c7752fc7af326b51cf6e9bac9504064a96a527e73b5a1cc8 Verified LRAT for 890 clauses and 846 actions.
+1345 da2385f5c60326be553f0c7896072c56624c7dd2b50231786d2ddee4f340d8e6 107dab14d196343326851112bc65cbefc897bfbefa703e6305aabb498ea1ccfa Verified LRAT for 1984 clauses and 709 actions.
+2345 2657f74d38d215ec124480984bbc8751d04922d3ab4c108c98183039fe885350 7e88c589de21b1c53bb787bbf52a17f848eeb193504748f636f5616ef87d33af Verified LRAT for 1984 clauses and 538 actions.
+All 15 source-set completeness certificates verified; 13224 LRAT actions.
