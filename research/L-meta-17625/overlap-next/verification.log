@@ -1,0 +1,70 @@
+Lean 4.36.0. Clean compilation against upstream e6bfe1a56efc768d244627b78f175b18de1acd6f.
+
+Building overlap/shared/SourceBudget.lean
+Building overlap/cover/ResidualDegree.lean
+Building overlap/cover/ExtremalCover.lean
+Building overlap/shared/SwitchCore.lean
+Building overlap/routing/CentreSeparation.lean
+Building overlap-next/path/PathSearchDefs.lean
+Building overlap/plane/StarGrowth.lean
+Building overlap/cover/RepeatCharge.lean
+Building overlap/shared/SharedSwitch.lean
+Building overlap-next/circuit/ActiveOr.lean
+'ActiveOr.three_need_both' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveOr.single_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building overlap-next/circuit/P4Ports.lean
+Building overlap-next/path/PathSearch.lean
+'PathSearch.wins_of_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathSearch.no_win' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building overlap-next/circuit/P4PortLift.lean
+Building overlap/cover/MatchingTransfer.lean
+Building overlap/shared/ProtectedTriple.lean
+Building overlap/routing/OrdinaryExtremal.lean
+Building overlap/shared/CentreSwitch.lean
+Building overlap-next/path/PathBits.lean
+Building overlap/shared/ExtremalRouting.lean
+Building overlap/routing/CentreTransfer.lean
+Building overlap/cover/ThreeBranches.lean
+Building overlap/cover/GeneralThree.lean
+Building overlap-next/matching/MatchingPorts.lean
+Building overlap-next/tight/RawBudget.lean
+Building overlap-next/matching/PathGeometry.lean
+'PathGeometry.witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building overlap-next/matching/GuardedPairs.lean
+Building overlap-next/matching/CommonLiteral.lean
+Building overlap-next/path/PathPhysical.lean
+Building overlap-next/matching/PathPromotion.lean
+'PathPromotion.separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building overlap-next/path/PathSchedule.lean
+Building overlap-next/matching/PathWins.lean
+'PathWins.wins' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building overlap-next/matching/PathConclusion.lean
+'PathConclusion.path_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PathConclusion
+replaying MatchingPorts
+replaying ActiveOr
+replaying RawBudget
+replaying CommonLiteral
+replaying GuardedPairs
+Verified PathConclusion, MatchingPorts, ActiveOr, RawBudget, CommonLiteral, GuardedPairs at upstream e6bfe1a56efc768d244627b78f175b18de1acd6f.
+
+'PathRemainder.bound_without_isolated_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathRemainder.no_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathRemainder.isolated_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PathRemainder
+'PrivateLeaves.disjoint_stars' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateLeaves.same_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PrivateLeaves
+'DisconnectedGeometry.at_most_two_redundant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DisconnectedGeometry.tight_examples' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying DisconnectedGeometry
+Verified PathRemainder, PrivateLeaves and DisconnectedGeometry against the clean dependency rebuild.
+
+Independent standard-library Python enumeration and positive control:
+Positive control: two ANDs and three ORs cover the path.
+AND AND OR OR no circuit
+AND OR AND OR no circuit
+AND OR OR AND no circuit
+OR AND AND OR no circuit
+OR AND OR AND no circuit
+OR OR AND AND no circuit
