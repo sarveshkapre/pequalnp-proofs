@@ -1,0 +1,18 @@
+∀ (m n k : Nat) (fs : List (SimpleGraph (Fin m ⊕ Fin n))),
+(∀ G ∈ fs, G.IsAcyclic) →
+let Region := Set (Fin m × Fin n)
+let z : Region := {p | ∀ G ∈ fs, ¬ G.Adj (.inl p.1) (.inr p.2)}
+let rect := fun s : Region => ∃ (r : Set (Fin m)) (c : Set (Fin n)), s = Set.prod r c
+let free := fun (F : Region → Prop) (s : Region) =>
+  ∀ P : Region → Prop, (∀ t, F t → P t) →
+    (∀ a b, P a → P b → P (a ∩ b)) → P s
+let circ := fun (F : Region → Prop) (i : Nat) (s : Region) =>
+  ∀ P : (Region → Prop) → Nat → Region → Prop,
+    (∀ B t, free B t → P B 0 t) →
+    (∀ B j a b t, free B a → free B b →
+      P (fun u => B u ∨ u = a ∪ b) j t → P B (j+1) t) → P F i s
+let formula := fun (i : Nat) (s : Region) =>
+  ∀ Q : Nat → Region → Prop, (∀ a, rect a → Q 0 a) →
+    (∀ i j a b, Q i a → Q j b → Q (i+j) (a ∩ b)) →
+    (∀ i j a b, Q i a → Q j b → Q (i+j+1) (a ∪ b)) → Q i s
+circ rect k z → formula (2 * fs.length * (4*k+1)) z
