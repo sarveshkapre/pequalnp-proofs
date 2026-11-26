@@ -1,0 +1,6 @@
+∃ C : PEqualNP.CircuitLowerBounds.Circuit,
+  PEqualNP.MetaComplexity.Monotone2 C ∧ C.size = 14 ∧
+  ∀ x : Fin 9 → Bool, C.eval (List.ofFn x) =
+    ((x 0 && x 4 && x 8) || (x 0 && x 5 && x 7) ||
+     (x 1 && x 3 && x 8) || (x 1 && x 5 && x 6) ||
+     (x 2 && x 3 && x 7) || (x 2 && x 4 && x 6))
