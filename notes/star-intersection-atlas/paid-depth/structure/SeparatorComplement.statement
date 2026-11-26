@@ -1,0 +1,12 @@
+∀ (r c s m b : Nat) (_hm : 0 < m)
+      (seed : (Fin s ⊕ (Fin m × Fin b)) → Prop) (dep : (Fin s ⊕ (Fin m × Fin b)) → Bool → (Fin s ⊕ (Fin m × Fin b)) → Prop)
+      (level : (Fin s ⊕ (Fin m × Fin b)) → Nat)
+      (A : (Fin s ⊕ (Fin m × Fin b)) → Bool → Set (Fin r)) (B : (Fin s ⊕ (Fin m × Fin b)) → Bool → Set (Fin c))
+      (outR : Set (Fin r)) (outC : Set (Fin c)) (v : (Fin s ⊕ (Fin m × Fin b)) → Fin r → Fin c → Prop),
+    (∀ i e j, dep i e j → level j < level i) →
+    (∀ i e j, dep i e j → ∃ z, Sum.elim (fun _ => True) (fun p => p.1 = z) i ∧ Sum.elim (fun _ => True) (fun p => p.1 = z) j) →
+    (∀ i x y, v i x y ↔ ∀ e, x ∈ A i e ∨ y ∈ B i e ∨ ∃ j, dep i e j ∧ v j x y) →
+    ∃ L : (Fin s → Option Bool) → Fin m → (Fin b → Bool) → Set (Fin r),
+    ∃ R : (Fin s → Option Bool) → Fin m → (Fin b → Bool) → Set (Fin c),
+    ∀ x y, (¬ (x ∈ outR ∨ y ∈ outC ∨ ∃ i, seed i ∧ v i x y)) ↔
+      ∃ σ, ∀ z, ∃ β, x ∈ L σ z β ∧ y ∈ R σ z β
