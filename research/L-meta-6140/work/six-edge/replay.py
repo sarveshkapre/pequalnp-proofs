@@ -261,25 +261,32 @@ def greedy():
         picks.append(neg[best]);available.remove(best)
     return picks+[neg[j] for j in sorted(available)]
 
-def replay_case(row, negatives, solver, lean, checker):
+def formula_from_trace(row, negatives, directory):
     order, mask, refinement, fingerprint = row
-    formula = build(order, mask, negatives, refinement)
+    formula = (directory / f"{order}-{mask}-{refinement}.cnf").read_bytes()
+    if formula != build(order, mask, negatives, refinement):
+        raise ValueError(f"{order}/{mask}/{refinement} Lean CNF differs from the original encoder")
     digest = sha256(formula).hexdigest()
     if digest != fingerprint:
         raise ValueError(f"{order}/{mask}/{refinement} formula changed: {digest}")
+    return formula
+
+
+def replay_case(row, formula, solver, lean, checker):
+    order, mask, refinement, fingerprint = row
     solved = run([solver, "-q", "--lrat", "--no-binary", "-", "-"],
                  input=formula, capture_output=True, check=False)
     if solved.returncode != 20:
         raise ValueError(f"{order}/{mask}/{refinement} solver returned {solved.returncode}")
     trace = b"\n".join(line for line in solved.stdout.splitlines() if line[:1].isdigit())
     with TemporaryDirectory(prefix="plane-six-certificate-") as temp:
-        cnf = Path(temp) / "input.cnf"
         proof = Path(temp) / "proof.lrat"
-        cnf.write_bytes(formula)
+        (Path(temp) / "case.txt").write_text(f"{order} {mask} {refinement}\n")
         proof.write_bytes(trace + b"\n")
-        result = run([lean, "--run", str(checker), str(cnf), str(proof)],
-                     text=True, capture_output=True, check=True)
-    print(f"{order} {mask:02d} {refinement} {digest} {result.stdout.strip()}", flush=True)
+        result = run([lean, str(checker)], cwd=temp, text=True, capture_output=True)
+        if result.returncode:
+            raise ValueError(f"{order}/{mask}/{refinement} failed: {result.stdout}{result.stderr}")
+    print(f"{order} {mask:02d} {refinement} {fingerprint} {result.stdout.strip()}", flush=True)
 
 
 def main():
@@ -289,7 +296,6 @@ def main():
     parser.add_argument("--jobs", type=int, default=2)
     args = parser.parse_args()
     directory = Path(__file__).resolve().parent
-    checker = directory.parent / "grid" / "bounds" / "CheckCover.lean"
     rows = json.loads((directory / "certificates.json").read_text())
     declared = run([args.lean, "--run", str(directory / "SixEdgeCertificates.lean")],
                    text=True, capture_output=True, check=True)
@@ -297,8 +303,21 @@ def main():
     if declared.stdout.splitlines() != keys:
         raise ValueError("certificate manifest does not match the 95 Lean case keys")
     negatives = greedy()[:80]
-    with ThreadPoolExecutor(max_workers=args.jobs) as workers:
-        list(workers.map(lambda row: replay_case(row, negatives, args.cadical, args.lean, checker), rows))
+    with TemporaryDirectory(prefix="plane-six-formulas-") as temp:
+        formulas = Path(temp)
+        checker = formulas / "CheckRecordedCase.lean"
+        checker.write_text("import SixEdgeJointReplay\n#eval SixEdge.Formula.replayRecordedCase\n")
+        export = formulas / "ExportFormulas.lean"
+        export.write_text("import SixEdgeTrace\nset_option maxRecDepth 100000 in\n"
+                          "set_option maxHeartbeats 0 in\n"
+                          f"#eval SixEdge.Formula.writeReplayInputs {json.dumps(str(formulas))}\n")
+        run([args.lean, str(export)], check=True)
+        def verify(row):
+            formula = formula_from_trace(row, negatives, formulas)
+            replay_case(row, formula, args.cadical, args.lean, checker)
+
+        with ThreadPoolExecutor(max_workers=args.jobs) as workers:
+            list(workers.map(verify, rows))
 
 
 if __name__ == "__main__":

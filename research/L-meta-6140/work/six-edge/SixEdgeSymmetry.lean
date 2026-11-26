@@ -161,6 +161,19 @@ theorem Relabelling.vertex_surjective (r : Relabelling) : Function.Surjective r.
   · obtain ⟨m,h⟩ := Finite.surjective_of_injective r.lineInjective l
     exact ⟨ln m, by simp [h]⟩
 
+theorem Relabelling.vertex_left_inverse (r : Relabelling) (v : Fin 26) :
+    r.inverse.vertex (r.vertex v) = v := by
+  rcases vertex_forms v with ⟨p,rfl⟩ | ⟨l,rfl⟩
+  · simp [point_inverse]
+  · simp [line_inverse]
+
+theorem Relabelling.vertex_injective (r : Relabelling) : Function.Injective r.vertex :=
+  Function.LeftInverse.injective r.vertex_left_inverse
+
+theorem Relabelling.vertex_right_inverse (r : Relabelling) (v : Fin 26) :
+    r.vertex (r.inverse.vertex v) = v :=
+  r.inverse.vertex_injective (r.vertex_left_inverse (r.inverse.vertex v))
+
 theorem Relabelling.preserves_tests (r : Relabelling) (x : Fin 26 → Bool) :
     graphFun plane ∅ (x ∘ r.vertex) = graphFun plane ∅ x := by
   apply Bool.eq_iff_iff.mpr
