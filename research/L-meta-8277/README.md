@@ -31,3 +31,22 @@ lake build +PEqualNP.Defs
 lake env lean ../research/L-meta-8277/GridMixed.lean
 lake env lean ../research/L-meta-8277/GridReplay.lean
 ```
+
+## Which internal gates must turn on?
+
+[Amritpal’s wire-43 edit](https://github.com/open-goat/pequalnp-proofs/discussions/21642#discussioncomment-19907634) recovers two required pairs. Only point 3 with line 5 is still missing. Every AND on a path to the output stays off on all 112 forbidden inputs with exactly two bits on.
+
+Any passing 28-gate circuit must behave differently on at least one of those inputs. An AND on a path to the output must turn on for a nonincident point and line, or there must be AND activations on both a two-point input and a two-line input. Different gates may supply these last two activations. A later AND must block the signal on the same input for the final output to be correct. Whether a passing 28-gate circuit exists remains open.
+
+The [checked Lean file](L_meta_8277_side_witness.lean) proves the condition for the grid in the merged reduction and checks the exact wire-43 edit. The main declarations are `GridSideWitness.kinds_required`, `GridSideWitness.fires_is_filtered` and `GridPublishedRepair.clean`. The source SHA-256 is `aba2f86bff6d6a6bdd79f62f22d0f22543907c052e13a243bb169ebfa4e63529`.
+
+From this checkout’s repository root, replay with its pinned Lean 4.36.0 toolchain.
+
+```sh
+proof_dir="$(pwd)/research/L-meta-8277"
+build_dir=$(mktemp -d)
+cd lean
+lake build +PEqualNP.Outside.L_meta_6973 +PEqualNP.Outside.L_meta_8029 +PEqualNP.Outside.R_meta_4893_629
+lake env lean -R "$proof_dir" -o "$build_dir/L_meta_8277_side_witness.olean" "$proof_dir/L_meta_8277_side_witness.lean"
+lake env sh -c 'export LEAN_PATH="$1:$LEAN_PATH"; leanchecker -v L_meta_8277_side_witness' sh "$build_dir"
+```
