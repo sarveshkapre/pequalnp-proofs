@@ -1,0 +1,11 @@
+∀ (n w : Nat) (f : Fin w → Fin w) (input : Fin w → Set (Fin n))
+    (selectors : List (Set (Fin n) × Nat)) (base : Set (Set (Fin n))),
+  let pair := fun (W : Set (Set (Fin n))) (a : Set (Fin n)) => a ∈ W ∧ aᶜ ∈ W
+  (∀ j, pair base (input j)) → (∀ t ∈ selectors, pair base t.1) →
+  ∃ V : Set (Set (Fin n)),
+    (∀ P : Nat → Set (Set (Fin n)) → Prop, P 0 base →
+      (∀ i W (a b : Set (Fin n)), P i W → pair W a → pair W b →
+        P (i+1) (insert (a ∩ b) (insert (a ∩ b)ᶜ W))) →
+      P (3*w*selectors.length) V) ∧
+    ∀ j, pair V {x | x ∈ input ((f^[((selectors.map (fun t =>
+      @ite Nat (x ∈ t.1) (Classical.propDecidable _) t.2 0)).sum)]) j)}

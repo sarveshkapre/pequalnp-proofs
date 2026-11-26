@@ -1,0 +1,11 @@
+∀ (G K : Type) [Group G] [Fintype G] [DecidableEq G] [Field K]
+    (act : G →* (K ≃+* K)) (i j : G) (m n u : K),
+  let tr := fun z : K => ∑ g : G, act g z
+  let a := fun x : K => m * act i x - n * act j x
+  let s := fun y : K => y + u * tr y
+  (∃ z, tr z ≠ 0) → tr u = 0 → u ≠ 0 → Function.Surjective a →
+    Function.Bijective s ∧ ∃ v : K, v ≠ 0 ∧
+      let coeff := fun g : G => (if g = i then m else 0) -
+        (if g = j then n else 0) + u * act g v
+      (∀ x, s (a x) = ∑ g : G, coeff g * act g x) ∧
+      ∀ g, g ≠ i → g ≠ j → coeff g ≠ 0

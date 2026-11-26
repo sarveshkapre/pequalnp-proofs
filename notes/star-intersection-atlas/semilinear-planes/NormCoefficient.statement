@@ -1,0 +1,5 @@
+∀ (K E : Type) [Field K] [Finite K] (key : K → E) (branch : E → K ≃+* K)
+    (negative : E → Bool) (outer : K ≃+* K) (u : K), u ≠ 0 →
+    (∀ z, key (-z) = key z) → (∀ e z, key (branch e z) = key z) →
+    Function.Bijective (fun z : K =>
+      u * outer (if negative (key z) then -(branch (key z) z) else branch (key z) z))
