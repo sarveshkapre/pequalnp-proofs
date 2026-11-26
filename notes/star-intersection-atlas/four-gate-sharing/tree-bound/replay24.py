@@ -39,7 +39,8 @@ def matching_seeds(rows):
     return grow(0, (1 << len(rows)) - 1, [], 0)
 
 
-def main(program):
+def census_input():
+    """Regenerate matching seeds for the boundary-size tree and forest censuses."""
     lines = []
     for shape, count in zip(STAR['HOSTS'], (41, 0, 17, 213, 68), strict=True):
         table, pairs = STAR['maximal_pairs'](shape)
@@ -52,7 +53,11 @@ def main(program):
         for mask, size, contacts in seeds:
             words = [w for i, pair in enumerate(pairs) if mask >> i & 1 for w in pair]
             lines.append(' '.join(map(str, (size, contacts, *words))))
-    result = subprocess.run([str(Path(program).resolve())], input='\n'.join(lines)+'\n',
+    return '\n'.join(lines)+'\n'
+
+
+def main(program):
+    result = subprocess.run([str(Path(program).resolve())], input=census_input(),
                             capture_output=True, text=True, check=True)
     print(result.stderr, end='')
     by_host = [set() for _ in range(5)]

@@ -100,7 +100,7 @@ string rooted(const array<Mask, 32> &adj, int v, int parent) {
     code += s;
   return code + ")";
 }
-string shape(const Rows &rows, int n) {
+string shape(const Rows &rows, int n, int components) {
   int m = rows.size(), v = m + n;
   array<Mask, 32> adj{};
   for (int i = 0; i < m; i++) {
@@ -108,28 +108,64 @@ string shape(const Rows &rows, int n) {
     for (Mask ns = rows[i]; ns; ns &= ns - 1)
       adj[m + first(ns)] |= bit(i);
   }
-  Mask core = bit(v) - 1;
-  while (count(core) > 2) {
-    Mask leaves = 0;
-    for (Mask left = core; left; left &= left - 1) {
-      int u = first(left);
-      if (count(adj[u] & core) == 1)
-        leaves |= bit(u);
+  auto component_code = [&](Mask component, int flip) {
+    Mask core = component;
+    while (count(core) > 2) {
+      Mask leaves = 0;
+      for (Mask left = core; left; left &= left - 1) {
+        int u = first(left);
+        if (count(adj[u] & core) == 1)
+          leaves |= bit(u);
+      }
+      if (!leaves)
+        throw runtime_error("target contains a cycle");
+      core ^= leaves;
     }
-    if (!leaves)
-      throw runtime_error("target contains a cycle");
-    core ^= leaves;
+    string a = rooted(adj, first(core), -1);
+    if (a.size() != 2 * unsigned(count(component)))
+      throw runtime_error("disconnected target");
+    if (flip >= 0)
+      a = char('0' + ((first(core) >= m) ^ flip)) + a;
+    core &= core - 1;
+    if (!core)
+      return a;
+    string b = rooted(adj, first(core), -1);
+    if (flip >= 0)
+      b = char('0' + ((first(core) >= m) ^ flip)) + b;
+    return min(a, b);
+  };
+  Mask all = bit(v) - 1;
+  if (components == 1)
+    return component_code(all, -1);
+  vector<string> codes[2];
+  for (Mask left = all; left;) {
+    Mask visit = bit(first(left)), part = visit;
+    while (visit) {
+      int j = first(visit);
+      visit &= visit - 1;
+      Mask fresh = adj[j] & ~part;
+      part |= fresh;
+      visit |= fresh;
+    }
+    left &= ~part;
+    for (int flip = 0; flip < 2; flip++)
+      codes[flip].push_back(component_code(part, flip));
   }
-  string a = rooted(adj, first(core), -1);
-  if (a.size() != 2 * unsigned(v))
-    throw runtime_error("disconnected target");
-  core &= core - 1;
-  return core ? min(a, rooted(adj, first(core), -1)) : a;
+  if (int(codes[0].size()) != components)
+    throw runtime_error("invalid component count");
+  string labels[2];
+  for (int flip = 0; flip < 2; flip++) {
+    sort(codes[flip].begin(), codes[flip].end());
+    for (const auto &word : codes[flip])
+      labels[flip] += word;
+  }
+  return min(labels[0], labels[1]);
 }
 set<string> withoutRestored, withRestored;
+bool audit = false;
 struct Census {
   const Host &h;
-  int id, k, u;
+  int id, k, u, components;
   Words A, B, r, c;
   Rows base, target, transpose;
   vector<Words> opts;
@@ -138,9 +174,11 @@ struct Census {
   unordered_map<string, string> &known;
   set<string> &found;
   Census(const Host &host, int index, Words a, Words b, int size,
-         unordered_map<string, string> &seen, set<string> &codes)
-      : h(host), id(index), k(a.size()), u(size - 2 * k), A(a), B(b), r(k, -1),
-        c(k, -1), known(seen), found(codes) {
+         int component_count, unordered_map<string, string> &seen,
+         set<string> &codes)
+      : h(host), id(index), k(a.size()), u(size - 2 * k),
+        components(component_count), A(a), B(b), r(k, -1), c(k, -1),
+        known(seen), found(codes) {
     for (int x : A)
       base.push_back(h.neighbors(x, B));
   }
@@ -165,23 +203,34 @@ struct Census {
     }
     auto it = known.find(key);
     if (it == known.end())
-      it = known.emplace(key, shape(rows, n)).first;
+      it = known.emplace(key, shape(rows, n, components)).first;
     (target == base ? withoutRestored : withRestored).insert(it->second);
-    if (found.insert(it->second).second)
-      cout << id << " " << it->second << "\n";
+    if (found.insert(it->second).second) {
+      cout << id << " " << it->second;
+      if (audit) {
+        Words xs = r, ys = c;
+        for (const auto &connector : sel)
+          (connector.side ? ys : xs).push_back(connector.word);
+        cout << " " << xs.size();
+        for (const auto &shore : {xs, ys})
+          for (int word : shore)
+            cout << " " << word;
+      }
+      cout << "\n";
+    }
   }
   // Add distinct exposed vertices, preserving the induced graph and acyclicity.
   void connect(const vector<Connector> &pool, int start, Groups groups,
                vector<Connector> &sel) {
     int needed = u - int(sel.size());
     if (!needed) {
-      if (groups.number == 1)
+      if (groups.number == components)
         complete(sel);
       return;
     }
     for (int j = start; j + needed <= (int)pool.size(); j++) {
       auto x = pool[j];
-      if (count(x.neighbors) > groups.number - needed + 1)
+      if (count(x.neighbors) > groups.number - needed + 2 - components)
         continue;
       auto next = groups;
       if (!next.joinAll(x.neighbors))
@@ -199,16 +248,84 @@ struct Census {
       sel.pop_back();
     }
   }
+  // Alternative completion test: account for every edge, then count components
+  // on the actual graph. A graph with v vertices and v-c edges is a forest
+  // precisely when it has c components. This branch never contracts a matching.
+  void auditChoices(const vector<Connector> &pool, int start, int edgesLeft,
+                    vector<Connector> &sel) {
+    const int need = u - int(sel.size());
+    if (edgesLeft < 2 * need)
+      return;
+    if (need == 0) {
+      if (edgesLeft)
+        return;
+      array<Mask, 32> adj{};
+      auto edge = [&](int a, int b) {
+        adj[a] |= bit(b);
+        adj[b] |= bit(a);
+      };
+      for (int i = 0; i < k; ++i)
+        for (Mask s = target[i]; s; s &= s - 1)
+          edge(i, k + first(s));
+      for (int i = 0; i < u; ++i) {
+        const auto &x = sel[i];
+        for (Mask s = x.neighbors; s; s &= s - 1)
+          edge(2 * k + i, (x.side ? 0 : k) + first(s));
+      }
+      int parts = 0;
+      Mask left = bit(2 * k + u) - 1;
+      while (left) {
+        ++parts;
+        Mask active = bit(first(left));
+        left ^= active;
+        while (active) {
+          int i = first(active);
+          active &= active - 1;
+          Mask fresh = left & adj[i];
+          left ^= fresh;
+          active |= fresh;
+        }
+      }
+      if (parts == components)
+        complete(sel);
+      return;
+    }
+    for (int j = start; j + need <= int(pool.size()); ++j) {
+      const auto &x = pool[j];
+      if (count(x.neighbors) > edgesLeft - 2 * (need - 1))
+        continue;
+      if (any_of(sel.begin(), sel.end(), [&](const auto &y) {
+            return x.side != y.side && !h.f[x.word & y.word];
+          }))
+        continue;
+      sel.push_back(x);
+      auditChoices(pool, j + 1, edgesLeft - count(x.neighbors), sel);
+      sel.pop_back();
+    }
+  }
   void extend(Groups groups) {
     ++lifts;
     if (target != base)
       ++restored;
     vector<Connector> pool, sel;
+    if (audit) {
+      int edgesLeft = 2 * k + u - components;
+      for (Mask row : target)
+        edgesLeft -= count(row);
+      for (int side = 0; side < 2; ++side)
+        for (int word : h.reps) {
+          Mask ns = h.neighbors(word, side ? r : c);
+          if (count(ns) >= 2 && count(ns) <= edgesLeft - 2 * (u - 1))
+            pool.push_back({word, side, ns});
+        }
+      auditChoices(pool, 0, edgesLeft, sel);
+      return;
+    }
     for (int side = 0; side < 2; side++)
       for (int x : h.reps) {
         Mask ns = h.neighbors(x, side ? r : c);
         int d = count(ns);
-        if (d < 2 || d > groups.number - u + 1)
+        if (d < 2 || d > groups.number - u + 2 - components)
           continue;
         auto g = groups;
         if (g.joinAll(ns))
@@ -251,7 +368,7 @@ struct Census {
         if (i != j && !groups.join(i, j))
           return;
       }
-    if (groups.number <= u)
+    if (groups.number < u + components)
       return;
     opts.assign(2 * k, {});
     order.clear();
@@ -267,9 +384,9 @@ struct Census {
   }
   void run(int t) {
     solve(base);
-    // At order 24 exactly one normalized contact can be restored, in this case
-    // alone.
-    if (k == 10 && t == 4)
+    // One extra contact can survive only when the order plus component count
+    // is 25.
+    if (k == 10 && t == 4 && 2 * k + u + components == 25)
       for (int i = 0; i < k; i++)
         for (int j = 0; j < k; j++)
           if (!(base[i] & bit(j))) {
@@ -279,7 +396,19 @@ struct Census {
           }
   }
 };
-int main() {
+int main(int argc, char **argv) {
+  int size = 24, components = 1;
+  if (argc == 3 || argc == 4) {
+    if (argc == 4 && string(argv[3]) != "--audit")
+      return 2;
+    audit = argc == 4;
+    size = stoi(argv[1]);
+    components = stoi(argv[2]);
+    if (!((size == 24 && components == 2) ||
+          (size == 23 && (components == 2 || components == 3))))
+      return 2;
+  } else if (argc != 1)
+    return 2;
   for (int h = 0; h < 5; h++) {
     string s;
     int n;
@@ -298,7 +427,7 @@ int main() {
             b[j] > 255)
           return 2;
       unordered_map<string, string> seen;
-      Census c(host, h, a, b, 24, seen, catalogue);
+      Census c(host, h, a, b, size, components, seen, catalogue);
       c.run(t);
       lifts += c.lifts;
       restored += c.restored;
