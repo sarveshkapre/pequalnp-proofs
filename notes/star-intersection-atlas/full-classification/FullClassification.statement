@@ -1,0 +1,30 @@
+let Cell := Fin 5 × Fin 6
+let Region := Set Cell
+let masks : Fin 5 → Nat := ![49, 42, 22, 13, 3]
+let q : Region := {p | ¬ (masks p.1).testBit p.2.val = true}
+let iso := fun (z : Region) =>
+  ∃ (r : Equiv.Perm (Fin 5)) (c : Equiv.Perm (Fin 6)),
+    z = (fun p : Cell => (r p.1,c p.2)) ⁻¹' q
+let rect := fun (s : Region) => ∃ r : Set (Fin 5), ∃ c : Set (Fin 6), s = Set.prod r c
+let cube := fun (z : Region) => ∃ a b c d e f : Region,
+  rect a ∧ rect b ∧ rect c ∧ rect d ∧ rect e ∧ rect f ∧
+  z = ((a ∪ b) ∩ (c ∪ d)) ∩ (e ∪ f)
+let free := fun (F : Region → Prop) (s : Region) =>
+  ∀ P : Region → Prop, (∀ t, F t → P t) →
+    (∀ a b, P a → P b → P (a ∩ b)) → P s
+let addWire := fun (F : Region → Prop) (w t : Region) => F t ∨ t = w
+let two := fun (F : Region → Prop) (s : Region) =>
+  ∃ a b, free F a ∧ free F b ∧
+    ∃ c d, free (addWire F (a ∪ b)) c ∧ free (addWire F (a ∪ b)) d ∧
+      free (addWire (addWire F (a ∪ b)) (c ∪ d)) s
+let three := fun (F : Region → Prop) (s : Region) =>
+  ∃ a b, free F a ∧ free F b ∧ two (addWire F (a ∪ b)) s
+let four := fun (F : Region → Prop) (s : Region) =>
+  ∃ a b, free F a ∧ free F b ∧ three (addWire F (a ∪ b)) s
+let formula := fun (n : Nat) (s : Region) =>
+  ∀ P : Nat → Region → Prop, (∀ t, rect t → P 0 t) →
+    (∀ i j a b, P i a → P j b → P (i+j) (a ∩ b)) →
+    (∀ i j a b, P i a → P j b → P (i+j+1) (a ∪ b)) → P n s
+∀ z : Region, (iso z ↔ ¬ three rect z) ∧
+  (iso z ↔ ¬ ∃ n < 4, formula n z) ∧ (¬ iso z → cube z) ∧
+  formula 4 z ∧ four rect z
