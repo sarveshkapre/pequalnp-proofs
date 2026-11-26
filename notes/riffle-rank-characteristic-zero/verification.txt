@@ -1,0 +1,15 @@
+Upstream definition SHA-256 a43edc0c5d5e2fb75251499571cff0738a44ebb4976d1e2c8d4a3e7ebe856d02
+Lean (version 4.36.0, arm64-apple-darwin24.6.0, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+'PackedRiffle.exact_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PackedRiffle.pair_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PackedRiffle.pair_exponent_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'RiffleDictionary.shell_separates' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying PEqualNP.Defs.RiffleRank
+replaying PackedRiffle
+replaying PairBound
+replaying Sphere
+All 4 modules compiled and replayed.
+
+Sphere s=2, d=3, n=3: 27 terms, 81 actual rational sums agree
+Sphere s=2, d=4, n=6: 81 terms, 1296 actual rational sums agree
+Sphere s=3, d=2, n=2: 25 terms, 16 actual rational sums agree
