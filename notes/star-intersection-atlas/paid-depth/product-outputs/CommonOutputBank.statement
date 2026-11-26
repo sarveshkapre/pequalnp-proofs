@@ -1,0 +1,11 @@
+∀ (s d : Nat) (R C Q : Type)
+  (ra : Fin s → Bool → R → Prop) (ca : Fin s → Bool → C → Prop)
+  (dep : Fin s → Bool → Fin s → Prop) (wire : Fin s → R → C → Prop)
+  (level : Fin s → Nat) (tap : Q → Fin s → Prop),
+  (∀ i, level i ≤ d) → (∀ i e j, dep i e j → level j < level i) →
+  (∀ i x y, wire i x y ↔ ∀ e, (ra i e x ∨ ca i e y) ∨
+    ∃ j, dep i e j ∧ wire j x y) →
+  ∃ (rows : Fin ((8*s+1)^(2^d)) → R → Prop)
+    (cols : Fin ((8*s+1)^(2^d)) → C → Prop)
+    (use : Q → Fin ((8*s+1)^(2^d)) → Prop), ∀ q x y,
+    (∃ i, tap q i ∧ wire i x y) ↔ ∃ j, use q j ∧ rows j x ∧ cols j y

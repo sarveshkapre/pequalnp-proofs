@@ -1,0 +1,13 @@
+∀ (g n s d : Nat),
+  let X := Fin g → Fin (n+2)
+  let Q := Fin g → Bool
+  ∀ (ra : Fin s → Bool → X → Prop) (ca : Fin s → Bool → X → Prop)
+    (dep : Fin s → Bool → Fin s → Prop) (wire : Fin s → X → X → Prop)
+    (level : Fin s → Nat) (tap : Q → Fin s → Prop)
+    (outRow outCol : Q → X → Prop),
+    (∀ i, level i ≤ d) → (∀ i e j, dep i e j → level j < level i) →
+    (∀ i x y, wire i x y ↔ ∀ e, (ra i e x ∨ ca i e y) ∨
+      ∃ j, dep i e j ∧ wire j x y) →
+    (∀ q x y, (∀ i, q i = true → x i = y i) ↔
+      (outRow q x ∨ outCol q y) ∨ ∃ j, tap q j ∧ wire j x y) →
+    (n+3)^g ≤ (8*s+1)^(2^d) + 1 ∧ 2^g ≤ s+1
