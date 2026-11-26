@@ -71,6 +71,15 @@ private theorem forest_edges (G : BGraph m n) (ha : G.IsAcyclic) (r : Fin m) (c 
   exact ⟨fun h => h.elim And.right And.right, fun h =>
     (parent_or ha h).elim (fun p => Or.inr ⟨p,h⟩) (fun p => Or.inl ⟨p,h⟩)⟩
 
+/-- The two layers used by forest simulation, exposed for component-sensitive bounds. -/
+theorem exists_two_layers (G : SimpleGraph (Fin m ⊕ Fin n)) (ha : G.IsAcyclic) :
+    ∃ A B : Layer (Fin m) (Fin n), ∀ r c,
+      A.edge r c ∨ B.edge r c ↔ G.Adj (.inl r) (.inr c) := by
+  refine ⟨(forestLayers G)[0]'(by simp [forestLayers]),
+    (forestLayers G)[1]'(by simp [forestLayers]), ?_⟩
+  intro r c
+  simpa [forestLayers] using forest_edges G ha r c
+
 /-- The zero set of the union of the cross edges of these forests. -/
 def forestZeros (fs : List (SimpleGraph (Fin m ⊕ Fin n))) : Set (Fin m × Fin n) :=
   {p | ∀ G ∈ fs, ¬ G.Adj (.inl p.1) (.inr p.2)}

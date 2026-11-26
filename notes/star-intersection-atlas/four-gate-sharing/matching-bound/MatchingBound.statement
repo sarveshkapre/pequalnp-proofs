@@ -1,0 +1,12 @@
+∀ (rows cols m d h : Nat) (G : SimpleGraph (Fin rows ⊕ Fin cols)),
+G.IsAcyclic →
+(∀ (q : Nat) (r : Fin q → Fin rows) (c : Fin q → Fin cols),
+  Function.Injective r → Function.Injective c →
+  (∀ j, G.Adj (.inl (r j)) (.inr (c j))) → q ≤ m) →
+0 < h → h < d → m ≤ d.choose h →
+let Region := Set (Fin rows × Fin cols)
+let rect := fun s : Region => ∃ (r : Set (Fin rows)) (c : Set (Fin cols)), s = Set.prod r c
+∀ Q : Nat → Region → Prop, (∀ a, rect a → Q 0 a) →
+  (∀ i j a b, Q i a → Q j b → Q (i+j) (a ∩ b)) →
+  (∀ i j a b, Q i a → Q j b → Q (i+j+1) (a ∪ b)) →
+  Q (2*(d-1)) {p | ¬ G.Adj (.inl p.1) (.inr p.2)}

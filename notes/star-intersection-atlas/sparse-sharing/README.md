@@ -6,6 +6,8 @@ Let C(G) be the minimum number of binary intersections needed to build a finite 
 
 The more general parameter is the number t of **bipartite P4-free layers** covering the edges. Each layer is a disjoint union of complete bipartite components, with isolated vertices allowed. Different layers can overlap. For every circuit with k paid gates, there is a formula costing at most t(4k+1).
 
+A [matching-number refinement](../four-gate-sharing/matching-bound/README.md) gives a uniform upper bound of 2k + log₂(k+1) + O(1) on forests. The construction labels the stars in each layer with equal-sized subsets. Its size depends on the maximum matching even when a tree has vertices of arbitrarily large degree.
+
 ## Proof
 
 Take complements of all wires. A free union of stars becomes a rectangle A × B in the zero set, meeting wires is free, and joining two wires costs one. The cost and reuse conventions survive this change exactly.
