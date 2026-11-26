@@ -1,0 +1,2 @@
+012 feasible 5983 canonical classes 197 pending {'classes': 20, 'expressions': 61}
+013 feasible 5892 canonical classes 167 pending {'classes': 9, 'expressions': 27}

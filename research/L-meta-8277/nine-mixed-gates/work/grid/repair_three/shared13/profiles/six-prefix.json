@@ -1,0 +1,29 @@
+[
+  {
+    "index": 0,
+    "shape": "012",
+    "total": 13,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "17856427d5ac064eb14507f87dad973b98d9298202326cfbfc3e4dfa5c245ee9",
+    "lrat": "c6c45f3a47ef07426db5718aadf258ce50c82aa4e2c13058c51f08499c66375a",
+    "actions": "5301"
+  },
+  {
+    "index": 1,
+    "shape": "012",
+    "total": 13,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "cbe5006c6fa9adc43bca7d26ab0ffca3be66d70a6412280c544a0083579b4e9f",
+    "lrat": "d50a164e5f039a74f28757a6e7df6391281812e6d7de802848a14930e80c2a61",
+    "actions": "12706"
+  },
+  {
+    "index": 2,
+    "shape": "013",
+    "total": 13,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "3c6a2741088b84d4973cc02a369cd600b4714596cf7d0540db5493a58d1aed7b",
+    "lrat": "0280474e1a084b2b0b63c0b5b9f71a3f6e89e0c6586ed6403b58135008e10a39",
+    "actions": "12740"
+  }
+]

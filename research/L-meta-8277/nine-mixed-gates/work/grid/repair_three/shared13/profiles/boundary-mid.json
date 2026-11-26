@@ -1,0 +1,264 @@
+[
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 1,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "c9b08d2c14b8f52f735e3f0c8533f117c7ea2d92e61e3e4d092eff50e17fb44c",
+    "lrat": "940bb2ab6bda74ebcb9ec8d74ef71aa122cb43aa7039954fbf1750408b8ceba8",
+    "actions": "452"
+  },
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 2,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "10630692006e2932c699976cf378b739b8c219c7dd0668455bbf67a10a40e4e0",
+    "lrat": "48b7fad4977f5258d7ade3021e91470c41a278a02d5a44cb4dcf1c5265f6e5a8",
+    "actions": "1911"
+  },
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "6ea2c7e74996450b26b6d87ef45878a664094b6e0b569199f38fd20a10f9ff63",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      585,
+      433,
+      118,
+      642,
+      268
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 1,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "4ef388f81bdfaa144cb409f48e5ed9561cad631a99e6fc6bd5f3eb651eb3b347",
+    "lrat": "5a5b8138feb5a8216e1d209720f4f164c3a93ea926459c5acb043f710f68bfa9",
+    "actions": "1193"
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 2,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "aef9cdc2d71728fd58541f22a3b3ea473668ac2bebbefdf5dd32f2892489856e",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      203,
+      307,
+      268,
+      100,
+      144,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "a8d628e50315b7d67c5969e3d3c214d616c1a8947dd861fa9e4ff4cdcee9378f",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      283,
+      577,
+      162,
+      84,
+      292,
+      648
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 7,
+    "line_gates": 1,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "3deea64248b0270218e45b0d61b047cd6f756913d3cb432336db97a77af321b0",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      73,
+      145,
+      266,
+      162,
+      276,
+      100,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 7,
+    "line_gates": 2,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "2fc48827a4f41512ef871a12536be936d6e00885302d554bd2b794140eb69f35",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      3,
+      98,
+      268,
+      164,
+      216,
+      272,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 7,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "6db8ca47803bef64e238825a806c80da03aee1e22a4512b05e1a9735dba706d7",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      1,
+      218,
+      290,
+      268,
+      788,
+      100,
+      640
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 1,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "120cd9c6a3285dddd6ab934a87505b9feeace7c2fcf053c23ebb19093f30f8ed",
+    "lrat": "4784ba8db1b24c656af82d1727ae64c3cfb63594f17a39e0b93b49d1c657f21a",
+    "actions": "349"
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 2,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "31fffde84db1f0cf1431e4a11e1ce3124577221f4c9a7c444478dc58bccb28ef",
+    "lrat": "1aea45c369098e789f559f2c65dfd3321dab20e85a5e61e4246ba2ca7c5de0f3",
+    "actions": "1856"
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "d543576ac9933114795299bb04f7b5d2b9c215b159abfb125ac28825c05160ff",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      85,
+      289,
+      390,
+      74,
+      184
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 1,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "1e51c8453763dc45d45a974e809cc659c533e5b4f460151493955f3bffe6bd96",
+    "lrat": "6776868bd684ec7f2e8164e8c8955ff8269e9a2024808500143d7d0b78e5e32f",
+    "actions": "748"
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 2,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "0fe37cb9c59d0368dcfbd9922fcdaa880208fb0d6ed13fc54592984465ebaa9c",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      41,
+      337,
+      70,
+      258,
+      180,
+      136
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "69b262af0fdca2802204f47f12abc2d8a87df2a86cb2d5c113db2c59232e8cb4",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      37,
+      73,
+      385,
+      326,
+      170,
+      16
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 7,
+    "line_gates": 1,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "acfba2f82ee147f1550781604c6e41e248c0a1ff6edfec9fa1c0582f7b778142",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      293,
+      73,
+      42,
+      258,
+      68,
+      16,
+      128
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 7,
+    "line_gates": 2,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "931b45eaa3d7fbb902b924a293f38fe95ea75c6293bbe196467141801e25c8d7",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      73,
+      49,
+      2,
+      212,
+      36,
+      136,
+      256
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 7,
+    "line_gates": 4,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "9c826169822f6e76fcb2268c0eeb5e5fe3f23164d3acd2487607c367f7de7747",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      11,
+      181,
+      70,
+      88,
+      40,
+      136,
+      256
+    ]
+  }
+]

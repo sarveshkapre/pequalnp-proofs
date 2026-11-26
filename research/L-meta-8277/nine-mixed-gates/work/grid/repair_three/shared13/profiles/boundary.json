@@ -1,0 +1,278 @@
+[
+  {
+    "shape": "012",
+    "boundary": 3,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "204f16d4c9d5d0c266a4e910a222121697643865cce19a947e1723826d4db33a",
+    "lrat": "ddb50ff88028e396bf0dfb4a584bd631cbfdfafd49104c51c60853c126c0cbc9",
+    "actions": "110"
+  },
+  {
+    "shape": "012",
+    "boundary": 3,
+    "line_gates": 3,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "695b3ab6408ea03e12e24dff82724a39585d412750aec4e1e92a0271433f6fd7",
+    "lrat": "05a66ec496b9cf22d0f8bcfe6f5f717e88ae6e6e344f54c3202ff52cef4211da",
+    "actions": "439"
+  },
+  {
+    "shape": "012",
+    "boundary": 3,
+    "line_gates": 5,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "e8da9f83d87b191cea72df30881e6c9f9cd8a5f33591c7df2d090dbfeacd70e3",
+    "lrat": "859f5c20a99f6fbbe8a978d915d0f3b0e8a9949952eda49c91611f70ecbf80aa",
+    "actions": "3487"
+  },
+  {
+    "shape": "012",
+    "boundary": 4,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "7390567704cf96c8fc3dc73a0c41ef91c4bcbc505ae0fa5a2888f5c5a21febd7",
+    "lrat": "59a1abf43f2662ea7f0eaa58fd427f74cf395ddd2626bb8ce1f734682c31884c",
+    "actions": "230"
+  },
+  {
+    "shape": "012",
+    "boundary": 4,
+    "line_gates": 3,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "097c94055cc0838f3aa196f2582b0d2755ba09ecca10ab032fef4ed553155d28",
+    "lrat": "53deafd9313dcbfdf17f54493efbcf246cf4b2379845a949e9e743181647b7f0",
+    "actions": "1897"
+  },
+  {
+    "shape": "012",
+    "boundary": 4,
+    "line_gates": 5,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "1322391fd75b4b074e9d9056920782b3e7aee272d798dd804ed7ba75ac88edbe",
+    "lrat": "d7c60fa426d8ccf6f28d9a68556e460cb80406a77b72ec0c2a4b6ac8e2cf8860",
+    "actions": "18807"
+  },
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "791e557e5a860d02b8d52c03ff42fe536f43de247bac4013982f74c42a14c3ba",
+    "lrat": "2a724237aa17b97eb2462839d2cf0040b89ab021f664993602f0a7b253a1bfe0",
+    "actions": "407"
+  },
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 3,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "69327b3cc094d1bef5263afd28c3864a233507e01e559d4234babcb4b06262fc",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      203,
+      307,
+      268,
+      244,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 5,
+    "line_gates": 5,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "0a21b61b46f180c07ba2c2863d73d88de94392b22f1a0f75e8236f8fc26e61df",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      513,
+      154,
+      354,
+      860,
+      164
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "7559b3b12ca86c76d708b19e094c55f1fa7bb6e94957feda4dd599810a9a8b2d",
+    "lrat": "49b866a2f5e4de20a5ed1a32dbc4384cc2fabe95382bcee176bb38711f86e4bc",
+    "actions": "517"
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 3,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "60b9386ab65945bb9dfebc7e6c43aed23f018b0fe8d063ba7d4e716f7a962167",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      155,
+      355,
+      76,
+      164,
+      272,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 6,
+    "line_gates": 5,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "422fe8bf8eae702a3be217a622cb71d5b015c8de5e58a340b563528d89d6474e",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      299,
+      585,
+      241,
+      238,
+      658,
+      276
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 3,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "215e2475e943a7cf2df74144e1dc54193af3e3b3622bdfc5d5fd0cc89fc8e04c",
+    "lrat": "4939fbaf73cd44280ed406d7c41b67c73108a4c50bf984ce1bed667a613a1b7a",
+    "actions": "218"
+  },
+  {
+    "shape": "013",
+    "boundary": 3,
+    "line_gates": 3,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "37cce822614de9d6b74046030b19264548954c2ffd1d7b6c84a80785bcfc31fb",
+    "lrat": "566a335fab5d125db77c93427a81761373489930d6646f677a88ea06b57f09ce",
+    "actions": "196"
+  },
+  {
+    "shape": "013",
+    "boundary": 3,
+    "line_gates": 5,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "acf40b89e3863db3eccadd652e7a51c3e567695d00ab97eecec3c7a968a914f6",
+    "lrat": "9eda6798bc75f3e953d678ee0a2097fbefa96ef56d3910a0779239b1d023afdd",
+    "actions": "1386"
+  },
+  {
+    "shape": "013",
+    "boundary": 4,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "791c870daef561b0bfdfbba2f4af14f00fb6bc17e9adbcad1646c500bd89bc17",
+    "lrat": "f8e8ecd4e4f2600ba71e9200519d10525dd6e9bd9b67f0926977fa937f9604bb",
+    "actions": "102"
+  },
+  {
+    "shape": "013",
+    "boundary": 4,
+    "line_gates": 3,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "f148b984db367d240ffed59f2b5ca7e4c74d974abfd0547de191a7e63a71ef64",
+    "lrat": "2bae628896013ae14e664b52f510d1c6faeb2de0a30cd73793ad1ccd32eda799",
+    "actions": "1403"
+  },
+  {
+    "shape": "013",
+    "boundary": 4,
+    "line_gates": 5,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "9c6c7e981a1b3ca1018d13c07e4e59bf5169f4f44656dda6f97c5203ef40cd0b",
+    "lrat": "ad1683c6d624c439146a3806b226e38e6e7fbf963e24d4cf09d77dbf8fd4ca7f",
+    "actions": "13852"
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "350a1bef3d0ba1b3999d728f96765b13bf563d01851b33c2654629a85a0fc95e",
+    "lrat": "60d5ca5615e6829c8e177499fb1a17484f6b9681e6a36d2de6e0974044f97ebf",
+    "actions": "351"
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 3,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "d6f0178b85fe95a41880587669094029c472663d33d779144eacfe016dfdd69b",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      389,
+      41,
+      70,
+      306,
+      216
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 5,
+    "line_gates": 5,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "b7436d7fd435c9b023757ddfe3b191524d571e72a422aa8750cbba2d914ed96e",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      69,
+      393,
+      42,
+      338,
+      180
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 0,
+    "verdict": "VERIFIED_UNSAT",
+    "sha256": "1c7eda61e2df78cb0b05fe27bb0dcdaa21ed270fc24634274f2f308a7d828861",
+    "lrat": "9d22999f5a6bff56d631cac36baa81709e12ce2e151158c4056b1fda846783ec",
+    "actions": "434"
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 3,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "975de559efe2a904560fbaae34773a69a65ea094876f4a0b3f3a0227376cb280",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      165,
+      73,
+      326,
+      42,
+      16,
+      384
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 6,
+    "line_gates": 5,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "13cd4c0339d65ad3f1b41a9c73c76ba67d030b94937a5c78a7616c0d4b26960c",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      47,
+      467,
+      68,
+      136,
+      48,
+      256
+    ]
+  }
+]

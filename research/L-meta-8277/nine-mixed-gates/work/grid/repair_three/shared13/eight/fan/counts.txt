@@ -1,0 +1,20 @@
+reused subtree 0 point, 1 line: 356784
+reused subtree 1 point, 0 line: 309056
+reused subtree 1 point, 1 line: 203888
+reused subtree 1 point, 2 line: 81120
+reused subtree 1 point, 3 line: 26848
+reused subtree 1 point, 4 line: 6592
+reused subtree 1 point, 5 line: 960
+reused subtree 2 point, 1 line: 29216
+reused subtree 2 point, 2 line: 41008
+reused subtree 2 point, 3 line: 31312
+reused subtree 2 point, 4 line: 16992
+reused subtree 2 point, 5 line: 5312
+reused subtree 3 point, 1 line: 2144
+reused subtree 3 point, 2 line: 6992
+reused subtree 3 point, 3 line: 12720
+reused subtree 3 point, 4 line: 14912
+reused subtree 3 point, 5 line: 14176
+012: 5983 feasible expression pairs, 1113 distinct labeled code constraints
+013: 5892 feasible expression pairs, 1048 distinct labeled code constraints
+expression pairs 1160032

@@ -1,0 +1,116 @@
+[
+  {
+    "shape": "012",
+    "boundary": 7,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "b7bb3cd5ae89bc0b5ef7c483e5bd7899f6865e61bb5bf1051008f043360815ca",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      81,
+      161,
+      138,
+      290,
+      76,
+      276,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 8,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "b15dc1daf09f8d6537c889c91402d470551d428b86ad857e96395d3839fe3ffc",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      81,
+      161,
+      138,
+      290,
+      76,
+      276,
+      512,
+      512
+    ]
+  },
+  {
+    "shape": "012",
+    "boundary": 9,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "1d8b0a37605d8b772398149e1a52ddd401b1fc2177bd3dbbc58ddbfb0d7049f6",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      81,
+      161,
+      138,
+      290,
+      76,
+      276,
+      512,
+      512,
+      512
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 7,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "6c79bf3e44990ce7c4fe9911b1e8573714fc2f68e492a7442ff9d419cb0f68cf",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      69,
+      41,
+      38,
+      74,
+      16,
+      128,
+      256
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 8,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "7f9096047962aa5c5b1a55fce93fd95036f55f34e93ed53ed867411184e2f8d9",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      69,
+      41,
+      38,
+      74,
+      16,
+      128,
+      256,
+      256
+    ]
+  },
+  {
+    "shape": "013",
+    "boundary": 9,
+    "line_gates": 0,
+    "verdict": "PROJECTED_SAT",
+    "sha256": "0be76f291c5d497f43ddd4dd60c738205dfee16f80b2e66443521b7b4e3b0e90",
+    "lrat": "",
+    "actions": "",
+    "masks": [
+      69,
+      41,
+      38,
+      74,
+      16,
+      128,
+      256,
+      256,
+      256
+    ]
+  }
+]
