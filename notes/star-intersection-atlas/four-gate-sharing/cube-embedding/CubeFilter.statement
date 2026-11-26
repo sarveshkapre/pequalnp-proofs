@@ -1,0 +1,14 @@
+∀ (m n d q t R D : Nat)
+    (N : Fin n → Finset (Fin m)) (x : Fin m → Finset (Fin d))
+    (y : Fin n → Finset (Fin d)) (tag : Fin m → Fin t)
+    (code : Fin t → Finset (Fin q))
+    (degree : ∀ c, (N c).card ≤ D)
+    (locality : ∀ c r, r ∈ N c →
+      (x r \ y c).card ≤ R ∧ (y c \ x r).card ≤ R)
+    (weight : ∀ r s, tag r = tag s → (x r).card = (x s).card)
+    (color : ∀ r s, tag r = tag s →
+      (x r \ x s).card + (x s \ x r).card ≤ 2 * (D * (2*R)) → r = s)
+    (separate : ∀ z (J : Finset (Fin t)), J.card ≤ D →
+      code z ⊆ J.biUnion code → z ∈ J),
+∃ (left : Fin (d+q) → Set (Fin m)) (right : Fin (d+q) → Set (Fin n)),
+      ∀ r c, r ∉ N c ↔ ∃ i, r ∈ left i ∧ c ∈ right i

@@ -6,7 +6,7 @@ Let C and F count binary intersections in circuits and formulas built from row a
 
     F ≤ 2(d(2^(k+1)) − 1) = 2k + log₂(k+1) + O(1).
 
-The earlier general bound was 8k+2. The [exact result at budget four](../forest-sharpness/README.md) gives the stronger low-budget answer five. A forest with a maximum matching of size s ≥ 1 needs at least log₂(s)−1 circuit intersections and at most 2 log₂(s)+log₂ log₂(s)+O(1) formula intersections as s grows. The best leading constant and the possibility of an unbounded additive gap on forests remain open here.
+The earlier general bound was 8k+2. The [exact result at budget four](../forest-sharpness/README.md) gives the stronger low-budget answer five. A forest with a maximum matching of size s ≥ 1 needs at least log₂(s)−1 circuit intersections and at most 2 log₂(s)+log₂ log₂(s)+O(1) formula intersections as s grows. The best leading constant and the possibility of an unbounded additive gap on forests remain open here. For bounded-degree trees the [hypercube construction](../cube-embedding/README.md) now gives leading constant one.
 
 ## The matching-number theorem
 
