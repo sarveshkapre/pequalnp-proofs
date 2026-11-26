@@ -1,0 +1,17 @@
+Comparison of independently posted finite obstructions
+Repository: Amritpal-Nijjar/pequalnp-proofs
+Revision: 694c3b11cae7c3b398821d768ea817e933719114
+Directory: research/disjoint-edges-and-five-inputs/disjoint
+Input: evidence/SixExclusion.cnf
+Bytes: 90407
+Git blob: 357d4195757fdf93d0e62928c571ec1cf859ee4e
+SHA-256: a96e6900784d30c5dcd66cba030006ec757d3ba24b51ade6da4668c7705eb859
+Certificate: src/certificates/SixExclusion.lrat
+Bytes: 346855
+Git blob: 23e423f858d24266af103fb5f688d759cf7725f1
+SHA-256: 06edfbb99f821a213d1b513d94fea3a7d9795d757b71b4b7e97532be4270c9bc
+Local checker: work/grid/repair_three/shared13/eight/check_certificates.py, verify(problem, proof)
+Sandbox: offline and read-only, known data sizes, six-second CPU limit, elapsed-time and resident-memory checks.
+Exit code: 0
+Verified UNSAT: 1633 variables, 5832 original clauses. LRAT derives empty clause 8847.
+Scope: archived CNF-to-contradiction only. No contributor code ran and no claim of replaying his full Lean bridge.

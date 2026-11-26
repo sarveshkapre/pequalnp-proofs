@@ -1,0 +1,239 @@
+Lean (version 4.36.0, arm64-apple-darwin24.6.0, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+Building MatchProjected
+Building ProjectedSchedule
+Building StarGrowth
+'StarGrowth.all_raw_sparse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StarGrowth.first_changes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'StarGrowth.centre_changes' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building SourceBudget
+'ResidualSourceBudget.pays_with_one_source' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ResidualSourceBudget.possible_obstructions' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ResidualDegree
+'ResidualDegree.plane_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ExtremalCover
+'ExtremalCover.transversals' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building SwitchCore
+'SwitchCore.equal_budget_forces_opposite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SwitchCore.matched_pairs_le_gates' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building CentreSeparation
+'CentreSeparation.separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CentreSeparation.ordinaryStars' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathSearchDefs
+Building MatchingKernel
+Building MatchWindow
+Building SelectorBits
+Building RepeatCharge
+'ResidualDegree.plane_repeat_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building SharedSwitch
+Building P4Ports
+'P4Ports.port_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ActiveOr
+'ActiveOr.three_need_both' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ActiveOr.single_capacity' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathSearch
+'PathSearch.wins_of_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathSearch.no_win' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building P4PortLift
+'P4PortLift.selected_port' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchOrders
+Building MatchCaseOOAA
+Propositional circuit: 5162 nodes, 19642 clauses.
+'MatchProjected.window_OOAA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchCaseOAOA
+Propositional circuit: 5847 nodes, 22602 clauses.
+'MatchProjected.window_OAOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchCaseOAAO
+Propositional circuit: 6556 nodes, 25754 clauses.
+'MatchProjected.window_OAAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchCaseAOOA
+Propositional circuit: 5769 nodes, 22474 clauses.
+'MatchProjected.window_AOOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchCaseAOAO
+Propositional circuit: 6478 nodes, 25626 clauses.
+'MatchProjected.window_AOAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchCaseAAOO
+Propositional circuit: 6364 nodes, 25210 clauses.
+'MatchProjected.window_AAOO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building KernelProp
+Building MatchingTransfer
+'ResidualDegree.transfer_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProtectedTriple
+'ProtectedResiduals.limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building OrdinaryExtremal
+'CentreSeparation.extremal' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building CentreSwitch
+'CentreSwitch.strict_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PhysicalPortMasks
+'PhysicalPortMasks.port_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhysicalPortMasks.center_owner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhysicalPortMasks.disjoint_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathBits
+Building MatchControls
+'MatchProjected.Controls.ordinary_support_matters' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MatchProjected.Controls.extra_pair_passes' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchExclusion
+'MatchProjected.no_realizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideOOAA
+Propositional circuit: 2354 nodes, 12108 clauses.
+'DisjointProjected.outside_OOAA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideOAOA
+Propositional circuit: 2948 nodes, 15456 clauses.
+'DisjointProjected.outside_OAOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideOAAO
+Propositional circuit: 3542 nodes, 18804 clauses.
+'DisjointProjected.outside_OAAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideAOOA
+Propositional circuit: 2854 nodes, 15028 clauses.
+'DisjointProjected.outside_AOOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideAOAO
+Propositional circuit: 3448 nodes, 18376 clauses.
+'DisjointProjected.outside_AOAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionOutsideAAOO
+Propositional circuit: 3354 nodes, 17948 clauses.
+'DisjointProjected.outside_AAOO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideOOAA
+Propositional circuit: 2513 nodes, 12813 clauses.
+'DisjointProjected.inside_OOAA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideOAOA
+Propositional circuit: 3107 nodes, 16161 clauses.
+'DisjointProjected.inside_OAOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideOAAO
+Propositional circuit: 3701 nodes, 19509 clauses.
+'DisjointProjected.inside_OAAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideAOOA
+Propositional circuit: 2993 nodes, 15653 clauses.
+'DisjointProjected.inside_AOOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideAOAO
+Propositional circuit: 3587 nodes, 19001 clauses.
+'DisjointProjected.inside_AOAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionInsideAAOO
+Propositional circuit: 3473 nodes, 18493 clauses.
+'DisjointProjected.inside_AAOO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossOOAA
+Propositional circuit: 2647 nodes, 13555 clauses.
+'DisjointProjected.cross_OOAA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossOAOA
+Propositional circuit: 3241 nodes, 16903 clauses.
+'DisjointProjected.cross_OAOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossOAAO
+Propositional circuit: 3835 nodes, 20251 clauses.
+'DisjointProjected.cross_OAAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossAOOA
+Propositional circuit: 3137 nodes, 16435 clauses.
+'DisjointProjected.cross_AOOA' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossAOAO
+Propositional circuit: 3731 nodes, 19783 clauses.
+'DisjointProjected.cross_AOAO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionCrossAAOO
+Propositional circuit: 3627 nodes, 19315 clauses.
+'DisjointProjected.cross_AAOO' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ExtremalRouting
+'ProtectedResiduals.extremal_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProtectedResiduals.cover_saves_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building CentreTransfer
+'CentreSeparation.cover_saves_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CentreSeparation.repeat_charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingRows
+'MatchingRows.leaf_geometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MatchingRows.edge_on_row' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionExclusion
+'DisjointProjected.no_four_selectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ThreeBranches
+'ResidualDegree.repeated_reads_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building GeneralThree
+'GeneralThree.tight_if_failed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralThree.matching_after_deletion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'GeneralThree.remaining' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PrivateMatching
+'PrivateMatching.private_guards' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.common_exception' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.unique_center_firing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.exceptional_far' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.rejects_guarded' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PrivateMatching.Guards.inside_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathGeometry
+'PathGeometry.witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingPorts
+'MatchingPorts.two_promoted' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectedTops
+'ProjectedTops.select' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ProjectionGeometry
+'ProjectionGeometry.top_masks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProjectionGeometry.ordinary_masks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ProjectionGeometry.induced' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathPhysical
+Building PathPromotion
+'PathPromotion.separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingLabels
+'MatchingLabels.of_failure' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building FiveRows
+Building PhysicalScheduleProjection
+Building PathSchedule
+Building MatchingGateOrder
+'MatchingGateOrder.ordered' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathWins
+'PathWins.wins' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingTerminals
+'MatchingTerminals.assemble' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingBridge
+'MatchingBridge.facts' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PhysicalTopSelectors
+'PhysicalTopSelectors.encode_side' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhysicalTopSelectors.inside_selectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhysicalTopSelectors.outside_selectors' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building FiveFacts
+Building PhysicalSchedule
+'PhysicalSchedule.encode' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building MatchingPhysical
+'MatchingPhysical.encode' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathConclusion
+'PathConclusion.path_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building NormalizeTips
+'NormalizeTips.normalize' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building FiveSchedule
+'FiveSchedule.exists_schedule' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ThreeMatchingReduction
+'ThreeMatchingBound.failure_realizes' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building PathRemainder
+'PathRemainder.bound_without_isolated_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathRemainder.no_bridge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PathRemainder.isolated_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building Realizability
+'DisjointEdgeBound.realizes_in_situation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DisjointEdgeBound.bound_of_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ThreeDisjoint
+'DisjointEdgeBound.failure_disjoint_of_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building TwoTouching
+'DisjointEdgeBound.two_touching_and_one_separate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DisjointEdgeBound.failure_requires_three_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+Building ThreeMatchingBound
+'ThreeMatchingBound.pairwise_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeMatchingBound.all_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+replaying MatchCaseOOAA
+replaying MatchCaseOAOA
+replaying MatchCaseOAAO
+replaying MatchCaseAOOA
+replaying MatchCaseAOAO
+replaying MatchCaseAAOO
+replaying ProjectionOutsideOOAA
+replaying ProjectionOutsideOAOA
+replaying ProjectionOutsideOAAO
+replaying ProjectionOutsideAOOA
+replaying ProjectionOutsideAOAO
+replaying ProjectionOutsideAAOO
+replaying ProjectionInsideOOAA
+replaying ProjectionInsideOAOA
+replaying ProjectionInsideOAAO
+replaying ProjectionInsideAOOA
+replaying ProjectionInsideAOAO
+replaying ProjectionInsideAAOO
+replaying ProjectionCrossOOAA
+replaying ProjectionCrossOAOA
+replaying ProjectionCrossOAAO
+replaying ProjectionCrossAOOA
+replaying ProjectionCrossAOAO
+replaying ProjectionCrossAAOO
+replaying ThreeMatchingBound
+replaying MatchControls
+Verified ThreeMatchingBound, MatchControls at e6bfe1a56efc768d244627b78f175b18de1acd6f.
