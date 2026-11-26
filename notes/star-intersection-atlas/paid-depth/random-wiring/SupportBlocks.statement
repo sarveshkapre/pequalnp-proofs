@@ -1,0 +1,13 @@
+∀ (G B R C : Type) (block : G → B) (edge : G → Bool → G → Prop)
+      (row : G → Bool → R → Prop) (col : G → Bool → C → Prop)
+      (need : G → Prop) (x : R) (y : C) (on : G → Prop),
+    (∀ g, (∀ e, row g e x ∨ col g e y ∨ ∃ j, edge g e j ∧ on j) → on g) →
+    (∀ T : G → Prop,
+      (∀ g, (∀ e, row g e x ∨ col g e y ∨ ∃ j, edge g e j ∧ T j) → T g) →
+      ∀ g, on g → T g) →
+    ((∀ g, need g → ¬on g) ↔
+      ∃ T : G → Prop, (∀ g, need g → ¬T g) ∧
+        ∀ b, ∃ arm : G → Bool,
+          (∀ g, block g = b → ¬T g → ∀ j, edge g (arm g) j → ¬T j) ∧
+          (∀ g, block g = b → ¬T g → ¬row g (arm g) x) ∧
+          (∀ g, block g = b → ¬T g → ¬col g (arm g) y))

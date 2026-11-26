@@ -1,0 +1,15 @@
+∀ (G : Type) (arm : (G → Prop) → G → Bool → Prop)
+      (need anchor on T : G → Prop) (hit : G → Bool → Prop),
+    (∀ X Y : G → Prop, (∀ g, X g → Y g) → ∀ g e, arm X g e → arm Y g e) →
+    (∀ g, (∀ e, arm on g e) → on g) →
+    (∀ X : G → Prop, (∀ g, (∀ e, arm X g e) → X g) → ∀ g, on g → X g) →
+    (∀ g, anchor g → T g) →
+    (∀ g e, hit g e → arm T g (!e) → T g) →
+    (∀ X : G → Prop, (∀ g, anchor g → X g) →
+      (∀ g e, hit g e → arm X g (!e) → X g) → ∀ g, T g → X g) →
+    (let test := (∀ g, need g → ¬T g) ∧
+       (∀ g, ¬anchor g → (∀ e, ¬hit g e) → ¬(∀ e, arm T g e))
+     (test → ∀ g, need g → ¬on g) ∧
+     ((∀ g, anchor g → on g) → (∀ g e, hit g e → arm on g e) →
+       (∀ g, on g → anchor g ∨ ∃ e, hit g e) →
+       (∀ g, need g → ¬on g) → test))

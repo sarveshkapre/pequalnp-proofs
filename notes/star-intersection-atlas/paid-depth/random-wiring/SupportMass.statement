@@ -1,0 +1,8 @@
+∀ (a : ℝ) (w : ℕ → ℝ) (P : ℕ → ℕ → ℝ),
+    0 < a → (∀ s, 0 ≤ w s) → (∀ s, w (s + 1) < a) →
+    P 0 0 ≤ 1 → (∀ s, P 0 (s + 1) ≤ 0) →
+    (∀ n, P (n + 1) 0 ≤ a * P n 0) →
+    (∀ n s, P (n + 1) (s + 1) ≤ w (s + 1) * P n (s + 1) + P n s) →
+    ∀ n, (∑ s ∈ Finset.range (n + 1), P n s) ≤
+      a ^ n * ∑ s ∈ Finset.range (n + 1),
+        ∏ j ∈ Finset.range s, (a - w (j + 1))⁻¹
