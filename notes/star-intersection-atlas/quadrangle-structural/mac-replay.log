@@ -1,0 +1,119 @@
+Independent offline source replay | sha256 78ee3a70c4de4d2acfd9603b14377ce3bac0ca0680177433cbf31fd5fa4260e4 | 559199 bytes
+Pinned pjscruggs sources byte-identical to 7da7d81614b93ea808c11ac27f27136942fec385; Mathlib fc4f59e577feb1a4956671bc04ac18aaaf8cd842
+Lean (version 4.36.0, arm64-apple-darwin24.6.0, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+BUILD OK TwoIntersections 1.91s
+'TwoIntersections.rectangle_normal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleHandoff 1.10s
+'QuadrangleHandoff.four' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK PartialRectangleColoring 1.74s
+'PartialRectangleColoring.compatible_hulls_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PartialRectangleColoring.cover_has_compatible_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PartialRectangleColoring.cover_iff_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PartialRectangleColoring.two_rectangles_iff_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK ThreeIntersections 6.92s
+'ThreeIntersections.normal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersections.rectangle_normal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK ThreeIntersectionsQuadrangle 1.65s
+'ThreeIntersectionsQuadrangle.fooling_cover_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsQuadrangle.witness_fooling' depends on axioms: [propext]
+'ThreeIntersectionsQuadrangle.no_union_four_rectangles' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadranglePadding 0.91s
+'QuadrangleHandoff.Represents.succ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleHandoff.Represents.mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleHandoff.excludes_smaller' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK ThreeIntersectionsSharingGap 1.83s
+'ThreeIntersectionsSharingGap.diamond_cover_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsSharingGap.diamond_not_majority' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsSharingGap.shared_shape_necessary' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleFormulaForests 2.93s
+'QuadrangleFormulaForests.complement_two_rectangles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaForests.rectangle_is_star' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaForests.quadrangle_complement_two_rectangles' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+BUILD OK QuadranglePartialFooling 1.64s
+'QuadranglePartialFooling.partial_fooling_cover_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadranglePartialFooling.no_union_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadranglePartialFooling.no_union_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleSquareObstruction 1.66s
+'QuadrangleSquareObstruction.no_square_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK ThreeIntersectionsRepresentation 1.96s
+'ThreeIntersectionsRepresentation.represents_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsRepresentation.represents_three_normal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsRepresentation.quadrangle_three_normal' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK ThreeIntersectionsFormula 2.63s
+'ThreeIntersectionsFormula.formula_first_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsFormula.formula_three_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsFormula.diamond_four_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ThreeIntersectionsFormula.generic_diamond_no_small_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleFormulaCatalog 13.11s
+'QuadrangleFormulaCatalog.rectangle_catalog' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaCatalog.complement_catalog' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaCatalog.forest_fooling' depends on axioms: [propext, Quot.sound]
+BUILD OK QuadrangleSharedReduction 1.77s
+'QuadrangleSharedReduction.diamond_partial_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.leftHull_subset_iff_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.leftHull_subset_iff_symmetric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.diamond_reconstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.no_diamond_of_partial_fooling' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.canonical_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.canonical_forbidden_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.nested_residual_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedReduction.no_diamond_of_canonical_partial_fooling' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'QuadrangleSharedReduction.interval_partial_fooling' does not depend on any axioms
+BUILD OK QuadrangleBaseUnion 16.98s
+'QuadrangleBaseUnion.conflicts_hit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleBaseUnion.rectangle_avoids_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleBaseUnion.no_base_union_two_by_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleFormulaExclusions 14.13s
+'QuadrangleFormulaExclusions.no_three_by_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaExclusions.three_forests_do_not_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleFormulaExclusions.no_three_two_factors' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleSharedColoring 1.72s
+'QuadrangleSharedColoring.fixed_diamond_iff_two_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedColoring.diamond_iff_two_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedColoring.no_diamond_iff_no_two_coloring' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleSharedFinite 1.94s
+'QuadrangleSharedFinite.check_sound' depends on axioms: [propext]
+'QuadrangleSharedFinite.check_empty_sound' depends on axioms: [propext]
+'QuadrangleSharedFinite.hullCheck_sound' depends on axioms: [propext]
+'QuadrangleSharedFinite.leaf_sound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedFinite.obstruction_of_checked_tree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleSharedFinite.no_shared_diamond_of_checked_tree' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleSharedFiniteData 7.10s
+'QuadrangleSharedFinite.certificate_checked' depends on axioms: [propext]
+'QuadrangleSharedFinite.no_shared_diamond' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD OK QuadrangleStructural 2.57s
+'QuadrangleStructural.no_first_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.exact_formula_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.three_requires_shared' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.three_requires_incomparable_hulls' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.no_normal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.no_three_zero_circuit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.four_suffices_three_impossible' depends on axioms: [propext, Classical.choice, Quot.sound]
+'QuadrangleStructural.exact_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+BUILD COMPLETE 20 source modules, 70 permitted axiom reports, 86.19s
+KERNEL OK TwoIntersections 5.18s replaying TwoIntersections
+KERNEL OK QuadrangleHandoff 3.74s replaying QuadrangleHandoff
+KERNEL OK PartialRectangleColoring 3.98s replaying PartialRectangleColoring
+KERNEL OK ThreeIntersections 4.09s replaying ThreeIntersections
+KERNEL OK ThreeIntersectionsQuadrangle 3.98s replaying ThreeIntersectionsQuadrangle
+KERNEL OK QuadranglePadding 3.35s replaying QuadranglePadding
+KERNEL OK ThreeIntersectionsSharingGap 4.24s replaying ThreeIntersectionsSharingGap
+KERNEL OK QuadrangleFormulaForests 4.40s replaying QuadrangleFormulaForests
+KERNEL OK QuadranglePartialFooling 4.47s replaying QuadranglePartialFooling
+KERNEL OK QuadrangleSquareObstruction 4.22s replaying QuadrangleSquareObstruction
+KERNEL OK ThreeIntersectionsRepresentation 4.17s replaying ThreeIntersectionsRepresentation
+KERNEL OK ThreeIntersectionsFormula 4.35s replaying ThreeIntersectionsFormula
+KERNEL OK QuadrangleFormulaCatalog 16.61s replaying QuadrangleFormulaCatalog
+KERNEL OK QuadrangleSharedReduction 5.81s replaying QuadrangleSharedReduction
+KERNEL OK QuadrangleBaseUnion 21.21s replaying QuadrangleBaseUnion
+KERNEL OK QuadrangleFormulaExclusions 15.47s replaying QuadrangleFormulaExclusions
+KERNEL OK QuadrangleSharedColoring 3.77s replaying QuadrangleSharedColoring
+KERNEL OK QuadrangleSharedFinite 3.83s replaying QuadrangleSharedFinite
+KERNEL OK QuadrangleSharedFiniteData 7.56s replaying QuadrangleSharedFiniteData
+KERNEL OK QuadrangleStructural 3.84s replaying QuadrangleStructural
+PASS 20 source modules and 20 standalone kernel checks, 70 axiom reports, 214.47s total
