@@ -1,0 +1,6 @@
+Translated cube: 6 exact 32-pair decoders, 0 target-line columns, all 41664 triples independent over the rationals.
+k=8: width 65 excluded; q>=6, max block 51, max ratio 15/17, exact partition cap 55/64.
+k=11: width 69 excluded; q>=5, max block 58, max ratio 49/58, exact partition cap 57/64.
+k=14: width 73 excluded; q>=4, max block 65, max ratio 53/65, exact partition cap 59/64.
+k=17: width 77 excluded; q>=3, max block 72, max ratio 19/24, exact partition cap 61/64.
+At 32 targets, at least 93 columns are required.

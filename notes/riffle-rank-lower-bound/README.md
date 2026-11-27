@@ -1,6 +1,8 @@
 # An all-field lower bound for two-block riffle rank
 
-The [rational 32-symbol result](NINETY.md) rules out 89 terms by comparing two-column quotients. The written bound is now 90, with an exact checker and Lean-verified components.
+The [product-code bound](BLOCKS.md) raises the minimum at 32 symbols to **at least 93 over every field**. A six-target rational example uses all 64 columns essentially. The proof includes an exact checker and Lean-checked components.
+
+The earlier [rational 32-symbol result](NINETY.md) rules out 89 terms by comparing two-column quotients. The written bound is now 90, with an exact checker and Lean-verified components.
 
 The [logarithmic-deficit theorem](DYADIC.md) raises the 32-symbol lower bound to 89 and gives an exact rectangular family. At four symbols the [field comparison](FOUR-SYMBOLS.md) gives eight terms outside characteristic two and nine in characteristic two. Each note states its verification scope. The original square-root bound and proof follow.
 
