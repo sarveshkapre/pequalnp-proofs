@@ -1,0 +1,6 @@
+PASS interpolation and known-root elimination controls
+spans 1-32 binary 278
+spans 1-32 scalar 962
+spans 33-64 binary 2240
+spans 33-64 scalar 3396
+spans 33-64 ternary 20

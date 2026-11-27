@@ -1,0 +1,22 @@
+November 27, 2026. Clean local replay.
+macOS arm64, Apple Clang 21.0.0 (clang-2100.1.1.101), Python 3.14.0.
+python3 -I replay.py
+Exit code 0.
+
+PASS aggregate verifier retains the characteristic-11 witness
+PASS two-cube verifier retains the characteristic-11 witness
+PASS shared-coefficient elimination retains the characteristic-11 witness
+PASS direct Taylor controls at orders seven (rational) and eight (modulo eleven)
+PASS 18,644,672 pairwise-overlap patterns in spans 33-64; both verifiers complete
+PASS 134,359,744 support multisets over all spans 1-64 in the two-cube verifier
+PASS all per-span counts match the independent combinatorial formulas
+
+SHA-256 of the replayed inputs and saved census outputs
+9bca21185b9467a34d2d04d41edefa41aeb043b3b9724fb47d8a94289a7c0c55  aggregate.cpp
+88af6fc458cac857504f12724380268c94442b9d90a38bf398113380051fea9a  aggregate_finish.py
+7f462ff06d707da46896a9afe40bdcc3f92c59f37712783edfa8db607790d05b  two_cubes.cpp
+698729dacbac6fde31b19b77a7328a98d93405e194a31d1a85156ef205b0225d  replay.py
+b7751a64de19ce09931a8c1e2d7f429019fd8d723cb069e114106423a3f09842  aggregate.tsv
+0de2ed68966f04d270b6f50a90bc70f864794f61041ff5c36f15e8640689a837  aggregate_finish.log
+77289a43be425c1fde381904ca7237f972816f95216f05bdb9535244378d680f  two_cubes.tsv
+98c51aebf0856bc6c401f1e3c6e4d24c488de593dfa30661f56c240cde65a31b  complement.tsv
